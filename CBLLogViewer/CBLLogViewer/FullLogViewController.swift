@@ -41,17 +41,20 @@ class FullLogViewController: NSViewController {
                                                object: nil)
     }
     
-    @objc func onLoad(_ notification: Notification) {
-        totalMessages = LogParser.shared.messages
-        messages = LogParser.shared.messages
-        configureFilterOptions(true)
-        tableView.reloadData()
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        
+        loadData()
     }
     
     // MARK: Button Actions
     
     @IBAction func filter(sender: AnyObject) {
         filter()
+    }
+    
+    @objc func onLoad(_ notification: Notification) {
+        loadData()
     }
 }
 
@@ -88,6 +91,13 @@ private extension FullLogViewController {
                 ($0.level == Level.error && errorFilterButton.state == .on) ||
                 ($0.level == Level.verbose && verboseFilterButton.state == .on)
         })
+        tableView.reloadData()
+    }
+    
+    func loadData() {
+        totalMessages = LogParser.shared.messages
+        messages = LogParser.shared.messages
+        configureFilterOptions(messages.count > 0)
         tableView.reloadData()
     }
 }
