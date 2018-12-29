@@ -15,6 +15,7 @@
 		1ABE8E5421D70171005FC49B /* LogParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABE8E5321D70171005FC49B /* LogParser.swift */; };
 		1ABE8E5621D702D5005FC49B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABE8E5521D702D5005FC49B /* HomeViewController.swift */; };
 		1ABE8E5821D70628005FC49B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABE8E5721D70628005FC49B /* Constants.swift */; };
+		1ABE8E5A21D709FB005FC49B /* ReplicationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABE8E5921D709FB005FC49B /* ReplicationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,7 @@
 		1ABE8E5321D70171005FC49B /* LogParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogParser.swift; sourceTree = "<group>"; };
 		1ABE8E5521D702D5005FC49B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		1ABE8E5721D70628005FC49B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		1ABE8E5921D709FB005FC49B /* ReplicationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplicationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 				1ABE8E5321D70171005FC49B /* LogParser.swift */,
 				1ABE8E5521D702D5005FC49B /* HomeViewController.swift */,
 				1ABE8E3721D5C475005FC49B /* FullLogViewController.swift */,
+				1ABE8E5921D709FB005FC49B /* ReplicationViewController.swift */,
 				1ABE8E3921D5C478005FC49B /* Assets.xcassets */,
 				1ABE8E3B21D5C478005FC49B /* Main.storyboard */,
 				1ABE8E3E21D5C478005FC49B /* Info.plist */,
@@ -210,6 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1ABE8E5821D70628005FC49B /* Constants.swift in Sources */,
+				1ABE8E5A21D709FB005FC49B /* ReplicationViewController.swift in Sources */,
 				1ABE8E3821D5C475005FC49B /* FullLogViewController.swift in Sources */,
 				1ABE8E5421D70171005FC49B /* LogParser.swift in Sources */,
 				1ABE8E3621D5C475005FC49B /* AppDelegate.swift in Sources */,

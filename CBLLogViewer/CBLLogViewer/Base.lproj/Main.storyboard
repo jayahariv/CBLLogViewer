@@ -749,10 +749,10 @@
             </objects>
             <point key="canvasLocation" x="139" y="1431"/>
         </scene>
-        <!--View Controller-->
+        <!--Replication View Controller-->
         <scene sceneID="hgo-rK-2Qg">
             <objects>
-                <viewController id="QEJ-HG-wDe" sceneMemberID="viewController">
+                <viewController id="QEJ-HG-wDe" customClass="ReplicationViewController" customModule="CBLLogViewer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="pIG-pc-foe">
                         <rect key="frame" x="0.0" y="0.0" width="700" height="550"/>
                         <autoresizingMask key="autoresizingMask"/>
