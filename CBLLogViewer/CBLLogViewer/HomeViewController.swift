@@ -101,6 +101,9 @@ private extension HomeViewController {
         syncButton.isEnabled = enable
         dbButton.isEnabled = enable
         queryButton.isEnabled = enable
+        infoFilterButton.isEnabled = enable
+        errorFilterButton.isEnabled = enable
+        verboseFilterButton.isEnabled = enable
     }
     
     func configureAnalyse(_ enable: Bool) {
