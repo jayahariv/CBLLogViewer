@@ -8,41 +8,20 @@
 
 import Cocoa
 
-enum Domain: String {
-    case db = "DB"
-    case sync = "Sync"
-    case blip = "BLIP"
-    case ws = "WS"
-    case query = "Query"
-}
-
-enum Level: String {
-    case verbose = "Verbose:"
-    case info = "Info:"
-    case error = "ERROR:"
-}
-
-struct Message {
-    let domain: Domain
-    let level: Level
-    let time: String
-    let message: String
-}
-
 class LogParser: NSObject {
     private static let instance = LogParser()
     static var shared: LogParser {
         return instance
     }
     
-    var messages = [Message]()
+    var messages = [LogMessage]()
     
     func parse(_ path: URL) {
         do {
             let data = try String(contentsOf: path)
             let myStrings = data.components(separatedBy: .newlines)
             
-            var temp = [Message]()
+            var temp = [LogMessage]()
             for line in myStrings {
                 guard let rangeForCouchbaseLiteKey = line.range(of: "CouchbaseLite") else {
                     continue
@@ -68,11 +47,10 @@ class LogParser: NSObject {
                 let startIndexForTime = line.index(startIndex, offsetBy: 11)
                 let timestamp = line[startIndexForTime...endIndexForTime]
                 
-                let message = Message(domain: dom,
+                let message = LogMessage(domain: dom,
                                       level: lev,
                                       time: String(timestamp),
                                       message: String(substringWithMessage))
-                
                 temp.append(message)
             }
             

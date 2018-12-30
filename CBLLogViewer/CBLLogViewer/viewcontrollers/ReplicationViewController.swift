@@ -10,7 +10,7 @@ import Cocoa
 
 class ReplicationViewController: NSViewController {
     
-    var messages = [Message]()
+    var messages = [LogMessage]()
     
     @IBOutlet private weak var messageDetailTextField: NSTextField!
     @IBOutlet private weak var tableView: NSTableView!

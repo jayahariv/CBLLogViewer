@@ -12,8 +12,8 @@ class FullLogViewController: NSViewController {
     
     // MARK: Properties
     
-    private var messages = [Message]()
-    private var totalMessages = [Message]()
+    private var messages = [LogMessage]()
+    private var totalMessages = [LogMessage]()
     
     /// IB Properties
     @IBOutlet private weak var tableView: NSTableView!

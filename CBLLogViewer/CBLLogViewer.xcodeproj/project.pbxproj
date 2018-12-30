@@ -16,6 +16,8 @@
 		1ABE8E5621D702D5005FC49B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABE8E5521D702D5005FC49B /* HomeViewController.swift */; };
 		1ABE8E5821D70628005FC49B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABE8E5721D70628005FC49B /* Constants.swift */; };
 		1ABE8E5A21D709FB005FC49B /* ReplicationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABE8E5921D709FB005FC49B /* ReplicationViewController.swift */; };
+		1ABE8E5F21D9690A005FC49B /* LogReplicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABE8E5E21D9690A005FC49B /* LogReplicator.swift */; };
+		1ABE8E6121D9696A005FC49B /* LogMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABE8E6021D9696A005FC49B /* LogMessage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +45,8 @@
 		1ABE8E5521D702D5005FC49B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		1ABE8E5721D70628005FC49B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1ABE8E5921D709FB005FC49B /* ReplicationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplicationViewController.swift; sourceTree = "<group>"; };
+		1ABE8E5E21D9690A005FC49B /* LogReplicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogReplicator.swift; sourceTree = "<group>"; };
+		1ABE8E6021D9696A005FC49B /* LogMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogMessage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,12 +88,10 @@
 		1ABE8E3421D5C475005FC49B /* CBLLogViewer */ = {
 			isa = PBXGroup;
 			children = (
-				1ABE8E5721D70628005FC49B /* Constants.swift */,
+				1ABE8E6421D96A3A005FC49B /* misc */,
+				1ABE8E6321D96A1A005FC49B /* viewcontrollers */,
+				1ABE8E6221D96979005FC49B /* data */,
 				1ABE8E3521D5C475005FC49B /* AppDelegate.swift */,
-				1ABE8E5321D70171005FC49B /* LogParser.swift */,
-				1ABE8E5521D702D5005FC49B /* HomeViewController.swift */,
-				1ABE8E3721D5C475005FC49B /* FullLogViewController.swift */,
-				1ABE8E5921D709FB005FC49B /* ReplicationViewController.swift */,
 				1ABE8E3921D5C478005FC49B /* Assets.xcassets */,
 				1ABE8E3B21D5C478005FC49B /* Main.storyboard */,
 				1ABE8E3E21D5C478005FC49B /* Info.plist */,
@@ -105,6 +107,34 @@
 				1ABE8E4A21D5C478005FC49B /* Info.plist */,
 			);
 			path = CBLLogViewerTests;
+			sourceTree = "<group>";
+		};
+		1ABE8E6221D96979005FC49B /* data */ = {
+			isa = PBXGroup;
+			children = (
+				1ABE8E5321D70171005FC49B /* LogParser.swift */,
+				1ABE8E6021D9696A005FC49B /* LogMessage.swift */,
+				1ABE8E5E21D9690A005FC49B /* LogReplicator.swift */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		1ABE8E6321D96A1A005FC49B /* viewcontrollers */ = {
+			isa = PBXGroup;
+			children = (
+				1ABE8E5521D702D5005FC49B /* HomeViewController.swift */,
+				1ABE8E3721D5C475005FC49B /* FullLogViewController.swift */,
+				1ABE8E5921D709FB005FC49B /* ReplicationViewController.swift */,
+			);
+			path = viewcontrollers;
+			sourceTree = "<group>";
+		};
+		1ABE8E6421D96A3A005FC49B /* misc */ = {
+			isa = PBXGroup;
+			children = (
+				1ABE8E5721D70628005FC49B /* Constants.swift */,
+			);
+			path = misc;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,6 +243,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1ABE8E5821D70628005FC49B /* Constants.swift in Sources */,
+				1ABE8E5F21D9690A005FC49B /* LogReplicator.swift in Sources */,
+				1ABE8E6121D9696A005FC49B /* LogMessage.swift in Sources */,
 				1ABE8E5A21D709FB005FC49B /* ReplicationViewController.swift in Sources */,
 				1ABE8E3821D5C475005FC49B /* FullLogViewController.swift in Sources */,
 				1ABE8E5421D70171005FC49B /* LogParser.swift in Sources */,
