@@ -20,6 +20,7 @@ enum Level: String {
     case verbose = "Verbose:"
     case info = "Info:"
     case error = "ERROR:"
+    case warning = "WARNING:"
 }
 
 struct LogMessage {

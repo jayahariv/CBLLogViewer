@@ -23,14 +23,14 @@ class LogParser: NSObject {
             
             var temp = [LogMessage]()
             for line in myStrings {
-                guard let rangeForCouchbaseLiteKey = line.range(of: "CouchbaseLite") else {
+                guard let rangeForCouchbaseLiteKey = line.range(of: "] CouchbaseLite") else {
                     continue
                 }
                 let indexWithCategory = line.index(after: rangeForCouchbaseLiteKey.upperBound)
                 let substringWithCategory = line[indexWithCategory...]
                 
                 guard let rangeForCategory = substringWithCategory.range(of: ":") else {
-                    fatalError()
+                    continue
                 }
                 let indexForMessage = substringWithCategory.index(after: rangeForCategory.upperBound)
                 let indexForCategory = substringWithCategory.index(before: rangeForCategory.upperBound)

@@ -151,6 +151,8 @@ extension FullLogViewController: NSTableViewDelegate {
                 text = "info"
             case .verbose:
                 text = "verbose"
+            case .warning:
+                text = "warning"
             }
             cellIdentifier = CellIdentifiers.LevelCell
         } else if tableColumn == tableView.tableColumns[7] {
