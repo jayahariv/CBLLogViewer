@@ -730,7 +730,6 @@
                 <tabViewController selectedTabViewItemIndex="0" id="Zau-ai-Kvk" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem label="Full Log" id="OmB-5T-ZVN"/>
-                        <tabViewItem label="Replication" id="XjI-qq-l9l"/>
                     </tabViewItems>
                     <tabView key="tabView" type="noTabsNoBorder" id="Vv1-mO-yJA">
                         <rect key="frame" x="0.0" y="0.0" width="359" height="187"/>
@@ -743,7 +742,6 @@
                     <connections>
                         <outlet property="tabView" destination="Vv1-mO-yJA" id="7RB-zX-UNr"/>
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="tabItems" id="cIR-mK-7Of"/>
-                        <segue destination="QEJ-HG-wDe" kind="relationship" relationship="tabItems" id="xek-dS-qIO"/>
                     </connections>
                 </tabViewController>
                 <customObject id="x4P-lK-491" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
