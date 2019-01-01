@@ -11,8 +11,8 @@ This mac application will display all the information from the crash log text fi
 4. Choose a signing team, for provisioning.
 5. Run the application
 
-## How to open the mac application
-1. download the latest release. 
+## How to download direct application
+1. download the latest [release](https://github.com/jayahariv/CBLLogViewer/releases)
 2. open it. 
 3. system preference -> security and privacy -> open anyway. to allow the application to run. 
 4. open the application again. 
