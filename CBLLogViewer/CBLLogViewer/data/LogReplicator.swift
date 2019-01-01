@@ -9,12 +9,11 @@
 import Foundation
 
 struct LogReplicator {
+    let time: String
     let type: ReplicationType
-    let status: Status
-    let progressPercentage: Float
-    let revision: String // next revision
+    let status: ReplicatorStatus
+    let revision: String?
     let revisionStatus: RevisionStatus
-    let checkpoint: CheckPoint
 }
 
 struct CheckPoint {
@@ -23,16 +22,26 @@ struct CheckPoint {
     let remote: String
 }
 
+struct ReplicatorStatus {
+    let push: Status
+    let pull: Status
+    let db: Status
+}
+
 // MARK: ENUMs
 
-enum Status {
-    case busy, idle
+enum Status: String {
+    case busy = "busy,"
+    case idle = "idle,"
 }
 
 enum RevisionStatus {
-    case incoming, inserting, completed, notify
+    case incoming, inserting, completed, notify, none
 }
 
-enum ReplicationType {
-    case pull, push
+enum ReplicationType: String {
+    case pull = "{Pull#"
+    case push = "{Push#"
+    case dbworker = "{DBWorker#"
+    case replicator = "{Repl#"
 }

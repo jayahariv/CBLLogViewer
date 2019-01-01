@@ -15,6 +15,7 @@ class LogParser: NSObject {
     }
     
     var messages = [LogMessage]()
+    var logReplicators = [LogReplicator]()
     
     func parse(_ path: URL) {
         do {
@@ -22,6 +23,8 @@ class LogParser: NSObject {
             let myStrings = data.components(separatedBy: .newlines)
             
             var temp = [LogMessage]()
+            var tempLogReplicator = [LogReplicator]()
+            var status = ReplicatorStatus(push: .idle, pull: .idle, db: .idle)
             for line in myStrings {
                 guard let rangeForCouchbaseLiteKey = line.range(of: "] CouchbaseLite") else {
                     continue
@@ -45,16 +48,25 @@ class LogParser: NSObject {
                 let startIndex = line.startIndex
                 let endIndexForTime = line.index(startIndex, offsetBy: 25)
                 let startIndexForTime = line.index(startIndex, offsetBy: 11)
-                let timestamp = line[startIndexForTime...endIndexForTime]
+                let timestamp = String(line[startIndexForTime...endIndexForTime])
+                
+                if let logReplicator = getParseReplicator(substringWithMessage,
+                                                          timestamp: timestamp,
+                                                          status: status,
+                                                          level: lev) {
+                    status = logReplicator.status
+                    tempLogReplicator.append(logReplicator)
+                }
                 
                 let message = LogMessage(domain: dom,
-                                      level: lev,
-                                      time: String(timestamp),
-                                      message: String(substringWithMessage))
+                                         level: lev,
+                                         time: timestamp,
+                                         message: String(substringWithMessage))
                 temp.append(message)
             }
             
             messages = temp
+            logReplicators = tempLogReplicator
             
             NotificationCenter.default.post(name: Constants.DID_LOG_PARSE_NOTIFICATION,
                                             object: nil)
@@ -64,4 +76,31 @@ class LogParser: NSObject {
         }
     }
     
+    func getParseReplicator(_ substringWithMessage: Substring,
+                            timestamp: String,
+                            status: ReplicatorStatus,
+                            level: Level) -> LogReplicator? {
+        if let indexAfterActivityType = substringWithMessage.firstIndex(of: "}") {
+            let indexTillActivityType = substringWithMessage.index(before: indexAfterActivityType)
+            let activity = substringWithMessage[..<indexTillActivityType]
+            if let activityType = ReplicationType(rawValue: String(activity)) {
+                var status = status
+                if level == .info && substringWithMessage.range(of: "pushStatus=") != nil {
+                    let allStatus = substringWithMessage.components(separatedBy: " ")
+                    if
+                        let push = Status(rawValue: String(allStatus[1].suffix(5))),
+                        let pull = Status(rawValue: String(allStatus[2].suffix(5))),
+                        let db = Status(rawValue: String(allStatus[3].suffix(5))) {
+                        status = ReplicatorStatus(push: push, pull: pull, db: db)
+                    }
+                }
+                return LogReplicator(time: timestamp,
+                                     type: activityType,
+                                     status: status,
+                                     revision: nil,
+                                     revisionStatus: .none)
+            }
+        }
+        return nil
+    }
 }

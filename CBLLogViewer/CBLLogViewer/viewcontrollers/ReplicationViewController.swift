@@ -10,7 +10,7 @@ import Cocoa
 
 class ReplicationViewController: NSViewController {
     
-    var messages = [LogMessage]()
+    var logs = [LogReplicator]()
     
     @IBOutlet private weak var messageDetailTextField: NSTextField!
     @IBOutlet private weak var tableView: NSTableView!
@@ -31,14 +31,14 @@ class ReplicationViewController: NSViewController {
     override func viewWillAppear() {
         super.viewWillAppear()
         
-        messages = LogParser.shared.messages
+        logs = LogParser.shared.logReplicators
         tableView.reloadData()
     }
     
     // MARK: Button Actions
     
     @objc func onLoad(_ notification: Notification) {
-        messages = LogParser.shared.messages
+        logs = LogParser.shared.logReplicators
     }
 }
 
@@ -51,55 +51,55 @@ private extension ReplicationViewController {
 
 extension ReplicationViewController: NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return messages.count
+        return logs.count
     }
 }
 
 extension ReplicationViewController: NSTableViewDelegate {
     private enum CellIdentifiers {
         static let TimeCell = "Time_Cell_ID"
-        static let PULLCell = "PULL_Cell_ID"
-        static let PUSHCell = "PUSH_Cell_ID"
-        static let DBCell = "DB_Cell_ID"
-        static let USERCell = "USER_Cell_ID"
+        static let CheckpointCell = "CHECKPOINT_Cell_ID"
+        static let PullCell = "PULL_Cell_ID"
+        static let PushCell = "PUSH_Cell_ID"
+        static let DbCell = "DB_Cell_ID"
     }
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         var cellIdentifier: String = ""
         var text: String = ""
         var color: NSColor = NSColor.clear
-        let message = messages[row]
+        let log = logs[row]
         if tableColumn == tableView.tableColumns[0] {
-            text = message.time
+            text = log.time
             cellIdentifier = CellIdentifiers.TimeCell
         } else if tableColumn == tableView.tableColumns[1] {
-            color = message.domain == .ws ? NSColor.blue : NSColor.clear
-            cellIdentifier = CellIdentifiers.PULLCell
+            color = NSColor.orange
+            cellIdentifier = CellIdentifiers.CheckpointCell
         } else if tableColumn == tableView.tableColumns[2] {
-            color = message.domain == .blip ? NSColor.green : NSColor.clear
-            cellIdentifier = CellIdentifiers.PUSHCell
+            color = log.status.pull == Status.busy ? .orange : .gray
+            cellIdentifier = CellIdentifiers.PullCell
         } else if tableColumn == tableView.tableColumns[3] {
-            color = message.domain == .sync ? NSColor.orange : NSColor.clear
-            cellIdentifier = CellIdentifiers.DBCell
+            color = log.status.push == Status.busy ? .orange : .gray
+            cellIdentifier = CellIdentifiers.PushCell
         } else if tableColumn == tableView.tableColumns[4] {
-            color = message.domain == .db ? NSColor.purple : NSColor.clear
-            cellIdentifier = CellIdentifiers.USERCell
+            color = log.status.db == Status.busy ? .orange : .gray
+            cellIdentifier = CellIdentifiers.DbCell
         }
         
         if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: cellIdentifier),
                                          owner: nil) as? NSTableCellView {
             
-            cell.textField?.backgroundColor = color
-            cell.textField?.stringValue = text
+            (cell.viewWithTag(1) as? NSTextField)?.backgroundColor = color
+            (cell.viewWithTag(2) as? NSTextField)?.stringValue = text
             return cell
         }
         return nil
     }
     
     func tableViewSelectionDidChange(_ notification: Notification) {
-        let table = notification.object as! NSTableView
-        let message = messages[table.selectedRow]
-        messageDetailTextField.stringValue = message.message
+//        let table = notification.object as! NSTableView
+//        let message = logs[table.selectedRow]
+//        messageDetailTextField.stringValue = message.message
     }
 }
 
