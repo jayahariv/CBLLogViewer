@@ -58,6 +58,13 @@ class FullLogViewController: NSViewController {
     @objc func onLoad(_ notification: Notification) {
         loadData()
     }
+    
+    @IBAction func onCopyMessageDetail(sender: AnyObject) {
+        let pasteboard = NSPasteboard.general
+        pasteboard.declareTypes([NSPasteboard.PasteboardType.string], owner: nil)
+        pasteboard.setString(messageDetailTextField.stringValue,
+                             forType: NSPasteboard.PasteboardType.string)
+    }
 }
 
 
