@@ -55,15 +55,25 @@ class FullLogViewController: NSViewController {
         filter()
     }
     
+    @IBAction func search(sender: AnyObject) {
+        let keyword = searchTextField.stringValue
+        if !keyword.isEmpty {
+            messages = messages.filter({ $0.message.lowercased().range(of: keyword.lowercased()) != nil })
+            tableView.reloadData()
+        }
+    }
+    
     @objc func onLoad(_ notification: Notification) {
         loadData()
     }
     
     @IBAction func onCopyMessageDetail(sender: AnyObject) {
-        let pasteboard = NSPasteboard.general
-        pasteboard.declareTypes([NSPasteboard.PasteboardType.string], owner: nil)
-        pasteboard.setString(messageDetailTextField.stringValue,
-                             forType: NSPasteboard.PasteboardType.string)
+        copyToClipboard(messageDetailTextField.stringValue)
+    }
+    
+    @IBAction func copyAll(sender: AnyObject) {
+        let message = messages.map({ $0.message }).joined(separator: "\n")
+        copyToClipboard(message)
     }
 }
 
@@ -99,9 +109,6 @@ private extension FullLogViewController {
             ($0.level == Level.info && infoFilterButton.state == .on) ||
                 ($0.level == Level.error && errorFilterButton.state == .on) ||
                 ($0.level == Level.verbose && verboseFilterButton.state == .on)
-        }).filter({
-            searchTextField.stringValue.isEmpty ||
-            $0.message.range(of: searchTextField.stringValue) != nil
         })
         tableView.reloadData()
     }
@@ -111,6 +118,13 @@ private extension FullLogViewController {
         messages = LogParser.shared.messages
         configureFilterOptions(messages.count > 0)
         tableView.reloadData()
+    }
+    
+    func copyToClipboard(_ message: String) {
+        let pasteboard = NSPasteboard.general
+        pasteboard.declareTypes([NSPasteboard.PasteboardType.string], owner: nil)
+        pasteboard.setString(message,
+                             forType: NSPasteboard.PasteboardType.string)
     }
 }
 
@@ -186,11 +200,5 @@ extension FullLogViewController: NSTableViewDelegate {
         let table = notification.object as! NSTableView
         let message = messages[table.selectedRow]
         messageDetailTextField.stringValue = message.message
-    }
-}
-
-extension FullLogViewController: NSTextFieldDelegate {
-    func controlTextDidChange(_ obj: Notification) {
-        filter()
     }
 }

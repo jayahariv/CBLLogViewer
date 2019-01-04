@@ -1451,19 +1451,16 @@
                                 </connections>
                             </button>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zZf-uR-f5N">
-                                <rect key="frame" x="457" y="516" width="223" height="22"/>
+                                <rect key="frame" x="457" y="516" width="144" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Enter a search string" drawsBackground="YES" id="YO5-Bt-wsL">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
-                                <connections>
-                                    <outlet property="delegate" destination="XfG-lQ-9wD" id="USk-mM-IyB"/>
-                                </connections>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gdb-r5-05t">
-                                <rect key="frame" x="614" y="13" width="72" height="32"/>
-                                <buttonCell key="cell" type="push" title="Copy" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XQm-g9-jZo">
+                                <rect key="frame" x="556" y="13" width="130" height="32"/>
+                                <buttonCell key="cell" type="push" title="Copy Message" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XQm-g9-jZo">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -1471,12 +1468,32 @@
                                     <action selector="onCopyMessageDetailWithSender:" target="XfG-lQ-9wD" id="7Ej-qA-vbp"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="slh-sx-uu0">
+                                <rect key="frame" x="595" y="480" width="91" height="32"/>
+                                <buttonCell key="cell" type="push" title="Copy All" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dy5-OQ-D0j">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="copyAllWithSender:" target="XfG-lQ-9wD" id="dQc-yZ-dHd"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZtG-Ze-2Pb">
+                                <rect key="frame" x="603" y="509" width="83" height="32"/>
+                                <buttonCell key="cell" type="push" title="Search" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PON-R9-UK9">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="searchWithSender:" target="XfG-lQ-9wD" id="W32-fj-Vjm"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="ot2-2K-rCN" firstAttribute="trailing" secondItem="FxK-MR-gFK" secondAttribute="trailing" id="08b-Lj-fby"/>
                             <constraint firstItem="rAi-N2-ZbO" firstAttribute="trailing" secondItem="deo-MH-e7d" secondAttribute="trailing" id="0hB-zD-W1i"/>
                             <constraint firstItem="ot2-2K-rCN" firstAttribute="leading" secondItem="FxK-MR-gFK" secondAttribute="leading" id="0sv-wr-UKC"/>
-                            <constraint firstAttribute="trailing" secondItem="zZf-uR-f5N" secondAttribute="trailing" constant="20" id="5Gl-kR-LKj"/>
+                            <constraint firstAttribute="trailing" secondItem="slh-sx-uu0" secondAttribute="trailing" constant="20" id="6GJ-Jt-i0V"/>
                             <constraint firstItem="ihc-G8-3qu" firstAttribute="leading" secondItem="FxK-MR-gFK" secondAttribute="trailing" constant="20" id="8pe-Hu-N5N"/>
                             <constraint firstItem="sg5-QQ-ezL" firstAttribute="leading" secondItem="z2P-nw-cOy" secondAttribute="leading" id="AOv-ri-CFE"/>
                             <constraint firstItem="gdb-r5-05t" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="FXg-Xa-8gf" secondAttribute="trailing" constant="8" symbolic="YES" id="Bzc-Pp-Dhd"/>
@@ -1486,15 +1503,19 @@
                             <constraint firstItem="sg5-QQ-ezL" firstAttribute="trailing" secondItem="z2P-nw-cOy" secondAttribute="trailing" id="Ft6-Qt-Ae3"/>
                             <constraint firstAttribute="trailing" secondItem="gdb-r5-05t" secondAttribute="trailing" constant="20" id="Hp9-1K-PAu"/>
                             <constraint firstItem="deo-MH-e7d" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="J2p-1R-lKN"/>
+                            <constraint firstItem="slh-sx-uu0" firstAttribute="top" secondItem="zZf-uR-f5N" secondAttribute="bottom" constant="8" id="KEw-Jb-y7v"/>
                             <constraint firstItem="zZf-uR-f5N" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="12" id="PaF-T2-A2M"/>
                             <constraint firstItem="9Ku-to-oZ6" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="TX3-JS-MIJ"/>
+                            <constraint firstItem="slh-sx-uu0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ot2-2K-rCN" secondAttribute="trailing" constant="8" symbolic="YES" id="V1Q-6z-YiH"/>
                             <constraint firstAttribute="bottom" secondItem="gdb-r5-05t" secondAttribute="bottom" constant="20" id="Vva-dR-i0i"/>
+                            <constraint firstItem="ZtG-Ze-2Pb" firstAttribute="leading" secondItem="zZf-uR-f5N" secondAttribute="trailing" constant="8" id="Xe5-nH-5UE"/>
                             <constraint firstItem="ot2-2K-rCN" firstAttribute="top" secondItem="FxK-MR-gFK" secondAttribute="bottom" constant="12" id="YG9-AK-DLz"/>
                             <constraint firstItem="deo-MH-e7d" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="12" id="aOV-Wq-Rb6"/>
                             <constraint firstItem="sg5-QQ-ezL" firstAttribute="top" secondItem="z2P-nw-cOy" secondAttribute="bottom" constant="12" id="bJC-dN-BcC"/>
                             <constraint firstAttribute="trailing" secondItem="9Ku-to-oZ6" secondAttribute="trailing" id="f6w-4s-YLc"/>
                             <constraint firstItem="rAi-N2-ZbO" firstAttribute="leading" secondItem="deo-MH-e7d" secondAttribute="leading" id="g3X-sI-C7v"/>
                             <constraint firstAttribute="bottom" secondItem="FXg-Xa-8gf" secondAttribute="bottom" constant="20" id="gxz-To-sgC"/>
+                            <constraint firstItem="ZtG-Ze-2Pb" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="13" id="hlF-87-56h"/>
                             <constraint firstItem="VQg-8X-GDY" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="12" id="iFg-V6-sFK"/>
                             <constraint firstItem="FXg-Xa-8gf" firstAttribute="top" secondItem="9Ku-to-oZ6" secondAttribute="bottom" constant="20" id="iOG-YF-WGn"/>
                             <constraint firstItem="FXg-Xa-8gf" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="j0W-zI-qA3"/>
@@ -1504,6 +1525,7 @@
                             <constraint firstItem="ihc-G8-3qu" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="12" id="sfC-ce-eJl"/>
                             <constraint firstItem="z2P-nw-cOy" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="12" id="tpR-M0-g3c"/>
                             <constraint firstItem="9Ku-to-oZ6" firstAttribute="top" secondItem="rAi-N2-ZbO" secondAttribute="bottom" constant="12" id="uLq-Hd-Ckw"/>
+                            <constraint firstAttribute="trailing" secondItem="ZtG-Ze-2Pb" secondAttribute="trailing" constant="20" id="vBu-il-QdN"/>
                         </constraints>
                     </view>
                     <connections>
