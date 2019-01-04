@@ -14,6 +14,7 @@ struct LogReplicator {
     let status: ReplicatorStatus
     let revision: String?
     let revisionStatus: RevisionStatus
+    let message: ReplicatorMessage
 }
 
 struct CheckPoint {
@@ -28,6 +29,12 @@ struct ReplicatorStatus {
     let db: Status
 }
 
+struct ReplicatorMessage {
+    let pull: String?
+    let push: String?
+    let db: String?
+}
+
 // MARK: ENUMs
 
 enum Status: String {
@@ -40,8 +47,9 @@ enum RevisionStatus {
 }
 
 enum ReplicationType: String {
-    case pull = "{Pull#"
-    case push = "{Push#"
-    case dbworker = "{DBWorker#"
-    case replicator = "{Repl#"
+    case pull = "{Pull"
+    case push = "{Push"
+    case dbworker = "{DBWorker"
+    case replicator = "{Repl"
+    case incomingRev = "{IncomingRev"
 }

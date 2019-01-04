@@ -66,9 +66,9 @@ extension ReplicationViewController: NSTableViewDelegate {
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         var cellIdentifier: String = ""
-        var text: String = ""
         var color: NSColor = NSColor.clear
         let log = logs[row]
+        var text: String =  ""
         if tableColumn == tableView.tableColumns[0] {
             text = log.time
             cellIdentifier = CellIdentifiers.TimeCell
@@ -77,6 +77,9 @@ extension ReplicationViewController: NSTableViewDelegate {
             cellIdentifier = CellIdentifiers.CheckpointCell
         } else if tableColumn == tableView.tableColumns[2] {
             color = log.status.pull == Status.busy ? .orange : .gray
+            if let pullMessage = log.message.pull {
+                text = pullMessage
+            }
             cellIdentifier = CellIdentifiers.PullCell
         } else if tableColumn == tableView.tableColumns[3] {
             color = log.status.push == Status.busy ? .orange : .gray

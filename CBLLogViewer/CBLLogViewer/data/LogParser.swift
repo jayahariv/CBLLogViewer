@@ -50,19 +50,25 @@ class LogParser: NSObject {
                 let startIndexForTime = line.index(startIndex, offsetBy: 11)
                 let timestamp = String(line[startIndexForTime...endIndexForTime])
                 
-                if let logReplicator = getParseReplicator(substringWithMessage,
-                                                          timestamp: timestamp,
-                                                          status: status,
-                                                          level: lev) {
-                    status = logReplicator.status
-                    tempLogReplicator.append(logReplicator)
-                }
                 
-                let message = LogMessage(domain: dom,
-                                         level: lev,
-                                         time: timestamp,
-                                         message: String(substringWithMessage))
-                temp.append(message)
+                // REPLICATOR
+                if let type = getReplicationType(substringWithMessage) {
+                    
+                    status = getReplicationStatus(substringWithMessage, level: lev, type: type) ?? status
+                    let message = ReplicatorMessage(pull: getIncomingRev(substringWithMessage, level: lev, type: type),
+                                                    push: nil,
+                                                    db: nil)
+                    tempLogReplicator.append(LogReplicator(time: timestamp,
+                                                           type: type,
+                                                           status: status,
+                                                           revision: nil,
+                                                           revisionStatus: .none,
+                                                           message: message))
+                }
+                temp.append(LogMessage(domain: dom,
+                                       level: lev,
+                                       time: timestamp,
+                                       message: String(substringWithMessage)))
             }
             
             messages = temp
@@ -76,31 +82,51 @@ class LogParser: NSObject {
         }
     }
     
-    func getParseReplicator(_ substringWithMessage: Substring,
-                            timestamp: String,
-                            status: ReplicatorStatus,
-                            level: Level) -> LogReplicator? {
-        if let indexAfterActivityType = substringWithMessage.firstIndex(of: "}") {
-            let indexTillActivityType = substringWithMessage.index(before: indexAfterActivityType)
-            let activity = substringWithMessage[..<indexTillActivityType]
-            if let activityType = ReplicationType(rawValue: String(activity)) {
-                var status = status
-                if level == .info && substringWithMessage.range(of: "pushStatus=") != nil {
-                    let allStatus = substringWithMessage.components(separatedBy: " ")
-                    if
-                        let push = Status(rawValue: String(allStatus[1].suffix(5))),
-                        let pull = Status(rawValue: String(allStatus[2].suffix(5))),
-                        let db = Status(rawValue: String(allStatus[3].suffix(5))) {
-                        status = ReplicatorStatus(push: push, pull: pull, db: db)
-                    }
-                }
-                return LogReplicator(time: timestamp,
-                                     type: activityType,
-                                     status: status,
-                                     revision: nil,
-                                     revisionStatus: .none)
-            }
+    func getReplicationType(_ substringWithMessage: Substring) -> ReplicationType? {
+        guard let indexAfterActivityType = substringWithMessage.firstIndex(of: "#") else {
+            return nil
         }
-        return nil
+        
+        let indexTillActivityType = substringWithMessage.index(before: indexAfterActivityType)
+        let activity = substringWithMessage[...indexTillActivityType]
+        print(activity)
+        guard let activityType = ReplicationType(rawValue: String(activity)) else {
+            return nil
+        }
+        
+        return activityType
     }
+    
+    
+    func getReplicationStatus(_ substringWithMessage: Substring, level: Level, type: ReplicationType) -> ReplicatorStatus? {
+        guard
+            level == .info && type == .replicator &&
+                substringWithMessage.range(of: "pushStatus=") != nil
+            else {
+                return nil
+        }
+        
+        let allStatus = substringWithMessage.components(separatedBy: " ")
+        guard
+            let push = Status(rawValue: String(allStatus[1].suffix(5))),
+            let pull = Status(rawValue: String(allStatus[2].suffix(5))),
+            let db = Status(rawValue: String(allStatus[3].suffix(5)))  else {
+                return nil
+        }
+        
+        return ReplicatorStatus(push: push, pull: pull, db: db)
+    }
+    
+    func getIncomingRev(_ substringWithMessage: Substring, level: Level, type: ReplicationType) -> String? {
+        guard level == .verbose && type == .incomingRev else {
+            return nil
+        }
+        
+        guard let rangeBeforeRevisionNumber = substringWithMessage.range(of: "Received revision ") else {
+            return nil
+        }
+        
+        return substringWithMessage[rangeBeforeRevisionNumber.upperBound...].components(separatedBy: .whitespaces).first
+    }
+    
 }
