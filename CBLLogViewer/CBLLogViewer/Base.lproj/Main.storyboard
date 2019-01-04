@@ -727,9 +727,10 @@
         <!--Tab View Controller-->
         <scene sceneID="Yhb-FM-Hno">
             <objects>
-                <tabViewController selectedTabViewItemIndex="1" id="Zau-ai-Kvk" sceneMemberID="viewController">
+                <tabViewController selectedTabViewItemIndex="0" id="Zau-ai-Kvk" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem label="Full Log" id="OmB-5T-ZVN"/>
+                        <tabViewItem id="7PS-0o-mCK"/>
                     </tabViewItems>
                     <tabView key="tabView" type="noTabsNoBorder" id="Vv1-mO-yJA">
                         <rect key="frame" x="0.0" y="0.0" width="359" height="187"/>
@@ -742,6 +743,7 @@
                     <connections>
                         <outlet property="tabView" destination="Vv1-mO-yJA" id="7RB-zX-UNr"/>
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="tabItems" id="cIR-mK-7Of"/>
+                        <segue destination="QEJ-HG-wDe" kind="relationship" relationship="tabItems" id="axz-y7-DuL"/>
                     </connections>
                 </tabViewController>
                 <customObject id="x4P-lK-491" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -1448,18 +1450,31 @@
                                     <action selector="filterWithSender:" target="XfG-lQ-9wD" id="r4F-9y-70z"/>
                                 </connections>
                             </button>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zZf-uR-f5N">
+                                <rect key="frame" x="457" y="516" width="223" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Enter a search string" drawsBackground="YES" id="YO5-Bt-wsL">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <outlet property="delegate" destination="XfG-lQ-9wD" id="USk-mM-IyB"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <constraints>
                             <constraint firstItem="ot2-2K-rCN" firstAttribute="trailing" secondItem="FxK-MR-gFK" secondAttribute="trailing" id="08b-Lj-fby"/>
                             <constraint firstItem="rAi-N2-ZbO" firstAttribute="trailing" secondItem="deo-MH-e7d" secondAttribute="trailing" id="0hB-zD-W1i"/>
                             <constraint firstItem="ot2-2K-rCN" firstAttribute="leading" secondItem="FxK-MR-gFK" secondAttribute="leading" id="0sv-wr-UKC"/>
+                            <constraint firstAttribute="trailing" secondItem="zZf-uR-f5N" secondAttribute="trailing" constant="20" id="5Gl-kR-LKj"/>
                             <constraint firstItem="ihc-G8-3qu" firstAttribute="leading" secondItem="FxK-MR-gFK" secondAttribute="trailing" constant="20" id="8pe-Hu-N5N"/>
                             <constraint firstItem="sg5-QQ-ezL" firstAttribute="leading" secondItem="z2P-nw-cOy" secondAttribute="leading" id="AOv-ri-CFE"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ihc-G8-3qu" secondAttribute="trailing" constant="20" symbolic="YES" id="Cyw-gU-IcG"/>
                             <constraint firstItem="VQg-8X-GDY" firstAttribute="leading" secondItem="z2P-nw-cOy" secondAttribute="trailing" constant="20" id="D6B-BR-HoE"/>
+                            <constraint firstItem="zZf-uR-f5N" firstAttribute="leading" secondItem="ihc-G8-3qu" secondAttribute="trailing" constant="44" id="Dr1-OH-cXc"/>
                             <constraint firstItem="z2P-nw-cOy" firstAttribute="leading" secondItem="deo-MH-e7d" secondAttribute="trailing" constant="20" id="ERY-pE-rrZ"/>
                             <constraint firstItem="sg5-QQ-ezL" firstAttribute="trailing" secondItem="z2P-nw-cOy" secondAttribute="trailing" id="Ft6-Qt-Ae3"/>
                             <constraint firstItem="deo-MH-e7d" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="J2p-1R-lKN"/>
+                            <constraint firstItem="zZf-uR-f5N" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="12" id="PaF-T2-A2M"/>
                             <constraint firstItem="9Ku-to-oZ6" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="TX3-JS-MIJ"/>
                             <constraint firstItem="ot2-2K-rCN" firstAttribute="top" secondItem="FxK-MR-gFK" secondAttribute="bottom" constant="12" id="YG9-AK-DLz"/>
                             <constraint firstItem="deo-MH-e7d" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="12" id="aOV-Wq-Rb6"/>
@@ -1486,6 +1501,7 @@
                         <outlet property="infoFilterButton" destination="FxK-MR-gFK" id="pfJ-No-oKk"/>
                         <outlet property="messageDetailTextField" destination="FXg-Xa-8gf" id="GHO-LS-NbE"/>
                         <outlet property="queryButton" destination="VQg-8X-GDY" id="D2Q-zt-X5p"/>
+                        <outlet property="searchTextField" destination="zZf-uR-f5N" id="gkJ-O1-USx"/>
                         <outlet property="syncButton" destination="z2P-nw-cOy" id="Iib-yd-35x"/>
                         <outlet property="tableView" destination="h05-Uu-w0L" id="d17-aB-B8Z"/>
                         <outlet property="verboseFilterButton" destination="ot2-2K-rCN" id="gl5-SM-OT6"/>

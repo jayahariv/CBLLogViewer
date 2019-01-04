@@ -28,6 +28,8 @@ class FullLogViewController: NSViewController {
     @IBOutlet private weak var errorFilterButton: NSButton!
     @IBOutlet private weak var verboseFilterButton: NSButton!
     
+    @IBOutlet private weak var searchTextField: NSTextField!
+    
     // MARK: View Lifecycle
 
     override func viewDidLoad() {
@@ -90,6 +92,9 @@ private extension FullLogViewController {
             ($0.level == Level.info && infoFilterButton.state == .on) ||
                 ($0.level == Level.error && errorFilterButton.state == .on) ||
                 ($0.level == Level.verbose && verboseFilterButton.state == .on)
+        }).filter({
+            searchTextField.stringValue.isEmpty ||
+            $0.message.range(of: searchTextField.stringValue) != nil
         })
         tableView.reloadData()
     }
@@ -174,5 +179,11 @@ extension FullLogViewController: NSTableViewDelegate {
         let table = notification.object as! NSTableView
         let message = messages[table.selectedRow]
         messageDetailTextField.stringValue = message.message
+    }
+}
+
+extension FullLogViewController: NSTextFieldDelegate {
+    func controlTextDidChange(_ obj: Notification) {
+        filter()
     }
 }
