@@ -63,6 +63,11 @@ class FullLogViewController: NSViewController {
         }
     }
     
+    @IBAction func clearSearch(sender: AnyObject) {
+        searchTextField.stringValue = ""
+        filter()
+    }
+    
     @objc func onLoad(_ notification: Notification) {
         loadData()
     }

@@ -15,8 +15,6 @@
 		1ABE8E5421D70171005FC49B /* LogParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABE8E5321D70171005FC49B /* LogParser.swift */; };
 		1ABE8E5621D702D5005FC49B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABE8E5521D702D5005FC49B /* HomeViewController.swift */; };
 		1ABE8E5821D70628005FC49B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABE8E5721D70628005FC49B /* Constants.swift */; };
-		1ABE8E5A21D709FB005FC49B /* ReplicationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABE8E5921D709FB005FC49B /* ReplicationViewController.swift */; };
-		1ABE8E5F21D9690A005FC49B /* LogReplicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABE8E5E21D9690A005FC49B /* LogReplicator.swift */; };
 		1ABE8E6121D9696A005FC49B /* LogMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABE8E6021D9696A005FC49B /* LogMessage.swift */; };
 /* End PBXBuildFile section */
 
@@ -44,8 +42,6 @@
 		1ABE8E5321D70171005FC49B /* LogParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogParser.swift; sourceTree = "<group>"; };
 		1ABE8E5521D702D5005FC49B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		1ABE8E5721D70628005FC49B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		1ABE8E5921D709FB005FC49B /* ReplicationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplicationViewController.swift; sourceTree = "<group>"; };
-		1ABE8E5E21D9690A005FC49B /* LogReplicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogReplicator.swift; sourceTree = "<group>"; };
 		1ABE8E6021D9696A005FC49B /* LogMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogMessage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -114,7 +110,6 @@
 			children = (
 				1ABE8E5321D70171005FC49B /* LogParser.swift */,
 				1ABE8E6021D9696A005FC49B /* LogMessage.swift */,
-				1ABE8E5E21D9690A005FC49B /* LogReplicator.swift */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -124,7 +119,6 @@
 			children = (
 				1ABE8E5521D702D5005FC49B /* HomeViewController.swift */,
 				1ABE8E3721D5C475005FC49B /* FullLogViewController.swift */,
-				1ABE8E5921D709FB005FC49B /* ReplicationViewController.swift */,
 			);
 			path = viewcontrollers;
 			sourceTree = "<group>";
@@ -243,9 +237,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1ABE8E5821D70628005FC49B /* Constants.swift in Sources */,
-				1ABE8E5F21D9690A005FC49B /* LogReplicator.swift in Sources */,
 				1ABE8E6121D9696A005FC49B /* LogMessage.swift in Sources */,
-				1ABE8E5A21D709FB005FC49B /* ReplicationViewController.swift in Sources */,
 				1ABE8E3821D5C475005FC49B /* FullLogViewController.swift in Sources */,
 				1ABE8E5421D70171005FC49B /* LogParser.swift in Sources */,
 				1ABE8E3621D5C475005FC49B /* AppDelegate.swift in Sources */,

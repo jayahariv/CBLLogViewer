@@ -15,16 +15,12 @@ class LogParser: NSObject {
     }
     
     var messages = [LogMessage]()
-    var logReplicators = [LogReplicator]()
-    
     func parse(_ path: URL) {
         do {
             let data = try String(contentsOf: path)
             let myStrings = data.components(separatedBy: .newlines)
             
             var temp = [LogMessage]()
-            var tempLogReplicator = [LogReplicator]()
-            var status = ReplicatorStatus(push: .idle, pull: .idle, db: .idle)
             for line in myStrings {
                 guard let rangeForCouchbaseLiteKey = line.range(of: "] CouchbaseLite") else {
                     continue
@@ -50,21 +46,6 @@ class LogParser: NSObject {
                 let startIndexForTime = line.index(startIndex, offsetBy: 11)
                 let timestamp = String(line[startIndexForTime...endIndexForTime])
                 
-                
-                // REPLICATOR
-                if let type = getReplicationType(substringWithMessage) {
-                    
-                    status = getReplicationStatus(substringWithMessage, level: lev, type: type) ?? status
-                    let message = ReplicatorMessage(pull: getIncomingRev(substringWithMessage, level: lev, type: type),
-                                                    push: nil,
-                                                    db: nil)
-                    tempLogReplicator.append(LogReplicator(time: timestamp,
-                                                           type: type,
-                                                           status: status,
-                                                           revision: nil,
-                                                           revisionStatus: .none,
-                                                           message: message))
-                }
                 temp.append(LogMessage(domain: dom,
                                        level: lev,
                                        time: timestamp,
@@ -72,8 +53,6 @@ class LogParser: NSObject {
             }
             
             messages = temp
-            logReplicators = tempLogReplicator
-            
             NotificationCenter.default.post(name: Constants.DID_LOG_PARSE_NOTIFICATION,
                                             object: nil)
             
@@ -81,52 +60,4 @@ class LogParser: NSObject {
             print(error)
         }
     }
-    
-    func getReplicationType(_ substringWithMessage: Substring) -> ReplicationType? {
-        guard let indexAfterActivityType = substringWithMessage.firstIndex(of: "#") else {
-            return nil
-        }
-        
-        let indexTillActivityType = substringWithMessage.index(before: indexAfterActivityType)
-        let activity = substringWithMessage[...indexTillActivityType]
-        print(activity)
-        guard let activityType = ReplicationType(rawValue: String(activity)) else {
-            return nil
-        }
-        
-        return activityType
-    }
-    
-    
-    func getReplicationStatus(_ substringWithMessage: Substring, level: Level, type: ReplicationType) -> ReplicatorStatus? {
-        guard
-            level == .info && type == .replicator &&
-                substringWithMessage.range(of: "pushStatus=") != nil
-            else {
-                return nil
-        }
-        
-        let allStatus = substringWithMessage.components(separatedBy: " ")
-        guard
-            let push = Status(rawValue: String(allStatus[1].suffix(5))),
-            let pull = Status(rawValue: String(allStatus[2].suffix(5))),
-            let db = Status(rawValue: String(allStatus[3].suffix(5)))  else {
-                return nil
-        }
-        
-        return ReplicatorStatus(push: push, pull: pull, db: db)
-    }
-    
-    func getIncomingRev(_ substringWithMessage: Substring, level: Level, type: ReplicationType) -> String? {
-        guard level == .verbose && type == .incomingRev else {
-            return nil
-        }
-        
-        guard let rangeBeforeRevisionNumber = substringWithMessage.range(of: "Received revision ") else {
-            return nil
-        }
-        
-        return substringWithMessage[rangeBeforeRevisionNumber.upperBound...].components(separatedBy: .whitespaces).first
-    }
-    
 }
