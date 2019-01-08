@@ -77,7 +77,7 @@ class FullLogViewController: NSViewController {
     }
     
     @IBAction func copyAll(sender: AnyObject) {
-        let message = messages.map({ $0.message }).joined(separator: "\n")
+        let message = messages.map({ "\($0.time): \($0.message)" }).joined(separator: "\n")
         copyToClipboard(message)
     }
 }
@@ -203,7 +203,11 @@ extension FullLogViewController: NSTableViewDelegate {
     
     func tableViewSelectionDidChange(_ notification: Notification) {
         let table = notification.object as! NSTableView
-        let message = messages[table.selectedRow]
-        messageDetailTextField.stringValue = message.message
+        let selectedRow = table.selectedRow
+        guard selectedRow >= 0 else {
+            return
+        }
+        let message = messages[selectedRow]
+        messageDetailTextField.stringValue = "\(message.time): \(message.message)"
     }
 }
