@@ -2,8 +2,6 @@
 ## Overview 
 This mac application will display all the information from the crash log text file. Choose to filter the logs with the domain or level. 
 
-- [Warn] Replication section is not ready. Check only the Full Log section for now.
-
 ## How to run the project
 1. `git clone https://github.com/jayahariv/CBLLogViewer.git`
 2. `cd CBLLogViewer/CBLLogViewer`
