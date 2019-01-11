@@ -1,6 +1,6 @@
 # CBLLogViewer
 ## Overview 
-This mac application will display all the information from the crash log text file. Choose to filter the logs with the domain or level. 
+This mac application will display all the information from the couchbase xcode log text file. Choose to filter the logs with the domain or level. 
 
 ## How to run the project
 1. `git clone https://github.com/jayahariv/CBLLogViewer.git`
