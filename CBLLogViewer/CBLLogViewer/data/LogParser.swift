@@ -39,7 +39,7 @@ class LogParser: NSObject {
                 let domains = category.components(separatedBy: " ")
                 guard let dom = Domain(rawValue: domains[0]), let lev = Level(rawValue: domains[1])
                     else {
-                        fatalError()
+                        continue
                 }
                 let startIndex = line.startIndex
                 let endIndexForTime = line.index(startIndex, offsetBy: 25)
