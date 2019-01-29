@@ -34,7 +34,7 @@ class HomeViewController: NSViewController {
         dialog.canChooseDirectories = true;
         dialog.canCreateDirectories = true;
         dialog.allowsMultipleSelection = false;
-        dialog.allowedFileTypes = ["txt"];
+        dialog.allowedFileTypes = ["cbllog"];
         
         if (dialog.runModal() == .OK) {
             fileURL = dialog.url

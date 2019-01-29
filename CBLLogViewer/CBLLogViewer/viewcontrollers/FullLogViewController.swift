@@ -24,10 +24,6 @@ class FullLogViewController: NSViewController {
     @IBOutlet private weak var queryButton: NSButton!
     @IBOutlet private weak var messageDetailTextField: NSTextField!
     
-    @IBOutlet private weak var infoFilterButton: NSButton!
-    @IBOutlet private weak var errorFilterButton: NSButton!
-    @IBOutlet private weak var verboseFilterButton: NSButton!
-    
     @IBOutlet private weak var searchTextField: NSTextField!
     
     // MARK: View Lifecycle
@@ -77,7 +73,7 @@ class FullLogViewController: NSViewController {
     }
     
     @IBAction func copyAll(sender: AnyObject) {
-        let message = messages.map({ "\($0.time): \($0.message)" }).joined(separator: "\n")
+        let message = messages.map({ "\($0.dateDisplayString): \($0.message)" }).joined(separator: "\n")
         copyToClipboard(message)
     }
 }
@@ -91,9 +87,6 @@ private extension FullLogViewController {
         syncButton.isEnabled = enable
         dbButton.isEnabled = enable
         queryButton.isEnabled = enable
-        infoFilterButton.isEnabled = enable
-        errorFilterButton.isEnabled = enable
-        verboseFilterButton.isEnabled = enable
     }
     
     func initUI() {
@@ -110,10 +103,6 @@ private extension FullLogViewController {
                 ($0.domain == Domain.sync && syncButton.state == .on) ||
                 ($0.domain == Domain.db && dbButton.state == .on) ||
                 ($0.domain == Domain.query && queryButton.state == .on)
-        }).filter({
-            ($0.level == Level.info && infoFilterButton.state == .on) ||
-                ($0.level == Level.error && errorFilterButton.state == .on) ||
-                ($0.level == Level.verbose && verboseFilterButton.state == .on)
         })
         tableView.reloadData()
     }
@@ -147,7 +136,6 @@ extension FullLogViewController: NSTableViewDelegate {
         static let SYNCCell = "SYNC_Cell_ID"
         static let DBCell = "DB_Cell_ID"
         static let QURYCell = "QURY_Cell_ID"
-        static let LevelCell = "Level_Cell_ID"
         static let MessageCell = "Message_Cell_ID"
     }
     
@@ -157,7 +145,7 @@ extension FullLogViewController: NSTableViewDelegate {
         var color: NSColor = NSColor.clear
         let message = messages[row]
         if tableColumn == tableView.tableColumns[0] {
-            text = message.time
+            text = message.dateDisplayString
             cellIdentifier = CellIdentifiers.TimeCell
         } else if tableColumn == tableView.tableColumns[1] {
             color = message.domain == .ws ? NSColor.blue : NSColor.clear
@@ -175,18 +163,6 @@ extension FullLogViewController: NSTableViewDelegate {
             color = message.domain == .query ? NSColor.yellow : NSColor.clear
             cellIdentifier = CellIdentifiers.QURYCell
         } else if tableColumn == tableView.tableColumns[6] {
-            switch message.level {
-            case .error:
-                text = "error"
-            case .info:
-                text = "info"
-            case .verbose:
-                text = "verbose"
-            case .warning:
-                text = "warning"
-            }
-            cellIdentifier = CellIdentifiers.LevelCell
-        } else if tableColumn == tableView.tableColumns[7] {
             text = message.message
             cellIdentifier = CellIdentifiers.MessageCell
         }
@@ -208,6 +184,6 @@ extension FullLogViewController: NSTableViewDelegate {
             return
         }
         let message = messages[selectedRow]
-        messageDetailTextField.stringValue = "\(message.time): \(message.message)"
+        messageDetailTextField.stringValue = "\(message.dateDisplayString): \(message.message)"
     }
 }

@@ -14,42 +14,51 @@ class LogParser: NSObject {
         return instance
     }
     
+    var headerInfo: String!
+    
     var messages = [LogMessage]()
     func parse(_ path: URL) {
         do {
-            let data = try String(contentsOf: path)
-            let myStrings = data.components(separatedBy: .newlines)
+            let data = try String(contentsOf: path, encoding: .ascii)
+            var allLines = data.components(separatedBy: .newlines)
+            headerInfo = allLines.removeFirst()
             
             var temp = [LogMessage]()
-            for line in myStrings {
-                guard let rangeForCouchbaseLiteKey = line.range(of: "] CouchbaseLite") else {
+            guard
+                let timestampFromFilename = path.deletingPathExtension()
+                    .lastPathComponent
+                    .split(separator: "_")
+                    .last,
+                let time = TimeInterval(timestampFromFilename) else {
+                fatalError("timestamp for filename")
+            }
+            
+            let dateOfLog = Date(timeIntervalSince1970: time/1000)
+            print("Date: \(dateOfLog)")
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "HH:mm:ss.SSSSSS"
+            dateFormatter.defaultDate = dateOfLog
+            
+            for line in allLines {
+                guard let rangeOfTimestamp = line.range(of: "| ") else {
                     continue
                 }
-                let indexWithCategory = line.index(after: rangeForCouchbaseLiteKey.upperBound)
-                let substringWithCategory = line[indexWithCategory...]
-                
-                guard let rangeForCategory = substringWithCategory.range(of: ":") else {
+                let dateString = String(line[..<rangeOfTimestamp.lowerBound])
+                guard let date = dateFormatter.date(from: dateString) else {
                     continue
                 }
-                let indexForMessage = substringWithCategory.index(after: rangeForCategory.upperBound)
-                let indexForCategory = substringWithCategory.index(before: rangeForCategory.upperBound)
-                let substringWithMessage = line[indexForMessage...]
-                let category = String(substringWithCategory[...indexForCategory])
-                
-                let domains = category.components(separatedBy: " ")
-                guard let dom = Domain(rawValue: domains[0]), let lev = Level(rawValue: domains[1])
-                    else {
+                guard let rangeOfDomain = line.range(of: ": ") else {
+                    continue
+                }
+                let domainString = String(line[rangeOfTimestamp.upperBound..<rangeOfDomain.lowerBound])
+                guard let domain = Domain(rawValue: domainString) else {
                         continue
                 }
-                let startIndex = line.startIndex
-                let endIndexForTime = line.index(startIndex, offsetBy: 25)
-                let startIndexForTime = line.index(startIndex, offsetBy: 11)
-                let timestamp = String(line[startIndexForTime...endIndexForTime])
                 
-                temp.append(LogMessage(domain: dom,
-                                       level: lev,
-                                       time: timestamp,
-                                       message: String(substringWithMessage)))
+                let message = String(line[rangeOfDomain.upperBound...])
+                temp.append(LogMessage(domain: domain,
+                                       date: date,
+                                       message: message))
             }
             
             messages = temp

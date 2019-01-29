@@ -9,23 +9,22 @@
 import Foundation
 
 enum Domain: String {
-    case db = "DB"
-    case sync = "Sync"
-    case blip = "BLIP"
-    case ws = "WS"
-    case query = "Query"
-}
-
-enum Level: String {
-    case verbose = "Verbose:"
-    case info = "Info:"
-    case error = "ERROR:"
-    case warning = "WARNING:"
+    case db = "[DB]"
+    case sync = "[Sync]"
+    case blip = "[BLIP]"
+    case ws = "[WS]"
+    case query = "[Query]"
 }
 
 struct LogMessage {
     let domain: Domain
-    let level: Level
-    let time: String
+    let date: Date
     let message: String
+    
+    var dateDisplayString: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = .long
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        return dateFormatter.string(from: date)
+    }
 }
