@@ -11,18 +11,9 @@ import Cocoa
 class HomeViewController: NSViewController {
     
     // MARK: Properties
-    
-    private var fileURL: URL?
     /// IB properties
     @IBOutlet private weak var analyzeButton: NSButton!
     
-    // MARK: View Lifecycle
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        initUI()
-    }
     
     // MARK: Button Actions
     
@@ -37,29 +28,11 @@ class HomeViewController: NSViewController {
         dialog.allowedFileTypes = ["cbllog"];
         
         if (dialog.runModal() == .OK) {
-            fileURL = dialog.url
+            guard let path = dialog.url else {
+                fatalError()
+            }
             
-            configureAnalyse(true)
+            LogParser.shared.parse(path)
         }
-    }
-    
-    @IBAction func analyze(sender: AnyObject) {
-        guard let path = fileURL else {
-            fatalError()
-        }
-        
-        LogParser.shared.parse(path)
-    }
-}
-
-// MARK: Helper Methods
-
-private extension HomeViewController {
-    func initUI() {
-        configureAnalyse(false)
-    }
-    
-    func configureAnalyse(_ enable: Bool) {
-        analyzeButton.isEnabled = enable
     }
 }

@@ -693,32 +693,17 @@
                                     <action selector="browseFileWithSender:" target="4eb-0m-LvO" id="RRm-fB-z2V"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="erh-Ws-29V">
-                                <rect key="frame" x="107" y="502" width="88" height="32"/>
-                                <buttonCell key="cell" type="push" title="Analyze" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RMW-vC-Wuo">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="analyzeWithSender:" target="4eb-0m-LvO" id="aps-5Z-1po"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="erh-Ws-29V" firstAttribute="top" secondItem="AhE-fy-K1C" secondAttribute="top" constant="20" id="BEH-am-ZGB"/>
                             <constraint firstAttribute="trailing" secondItem="xri-sC-PpM" secondAttribute="trailing" id="ICi-20-Azf"/>
-                            <constraint firstItem="erh-Ws-29V" firstAttribute="leading" secondItem="e4r-KI-Bga" secondAttribute="trailing" constant="20" id="SHC-C2-AuK"/>
                             <constraint firstItem="xri-sC-PpM" firstAttribute="top" secondItem="e4r-KI-Bga" secondAttribute="bottom" constant="20" id="T7F-I3-Qau"/>
                             <constraint firstItem="e4r-KI-Bga" firstAttribute="leading" secondItem="AhE-fy-K1C" secondAttribute="leading" constant="20" id="ZY3-rP-36F"/>
                             <constraint firstItem="e4r-KI-Bga" firstAttribute="top" secondItem="AhE-fy-K1C" secondAttribute="top" constant="20" id="jlB-Yo-n32"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="erh-Ws-29V" secondAttribute="trailing" constant="511" id="p00-qH-oif"/>
                             <constraint firstAttribute="bottom" secondItem="xri-sC-PpM" secondAttribute="bottom" id="qPl-Jf-yIf"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="e4r-KI-Bga" secondAttribute="trailing" constant="20" symbolic="YES" id="t06-ad-xjC"/>
                             <constraint firstItem="xri-sC-PpM" firstAttribute="leading" secondItem="AhE-fy-K1C" secondAttribute="leading" id="zhl-kE-sG6"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="analyzeButton" destination="erh-Ws-29V" id="W8u-mc-oqH"/>
-                    </connections>
                 </viewController>
                 <customObject id="6mI-KN-1JT" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
