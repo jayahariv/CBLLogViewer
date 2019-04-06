@@ -18,6 +18,7 @@ This mac application will display all the information from the couchbase xcode l
 
 ## How to check the logs
 1. Choose the _verbose log_ throught the `browse` button. (Supported from Couchbase Iridium release).
+2. After selecting any lines, click the details to see the message details, copy options. 
 
 
 ## Screenshots
