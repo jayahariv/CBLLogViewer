@@ -21,10 +21,29 @@ struct LogMessage {
     let date: Date
     let message: String
     
+    let push: Push
+    let pull: Pull
+    let repl: Repl
+    
     var dateDisplayString: String {
         let dateFormatter = DateFormatter()
         dateFormatter.timeStyle = .long
         dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
         return dateFormatter.string(from: date)
     }
+}
+
+struct Push {
+    let isPush: Bool
+    let progress: Double?
+}
+
+struct Pull {
+    let isPull: Bool
+    let progress: Double?
+}
+
+struct Repl {
+    let isRepl: Bool
+    let progress: Double?
 }

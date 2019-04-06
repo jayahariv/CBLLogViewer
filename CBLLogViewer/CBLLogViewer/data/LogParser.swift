@@ -39,6 +39,9 @@ class LogParser: NSObject {
             dateFormatter.dateFormat = "HH:mm:ss.SSSSSS"
             dateFormatter.defaultDate = dateOfLog
             
+            var pushProgress: Double?
+            var pullProgress: Double?
+            var replProgress: Double?
             for line in allLines {
                 guard let rangeOfTimestamp = line.range(of: "| ") else {
                     continue
@@ -56,9 +59,27 @@ class LogParser: NSObject {
                 }
                 
                 let message = String(line[rangeOfDomain.upperBound...])
+                var isPush = false
+                var isPull = false
+                if let range = message.range(of: "{Push#") {
+                    isPush = true
+                    let infos = message.split(separator: " ")
+                    if infos.count == 12 && infos[1] == "progress" {
+                        print(message)
+                    }
+                }
+                if message.range(of: "{Pull#") != nil {
+                    isPull = true
+                }
+                let push = Push(isPush: isPush, progress: pushProgress)
+                let pull = Pull(isPull: isPull, progress: pullProgress)
+                let repl = Repl(isRepl: message.range(of: "{Repl#") != nil, progress: replProgress)
                 temp.append(LogMessage(domain: domain,
                                        date: date,
-                                       message: message))
+                                       message: message,
+                                       push: push,
+                                       pull: pull,
+                                       repl: repl))
             }
             
             messages = temp

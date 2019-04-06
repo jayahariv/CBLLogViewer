@@ -22,7 +22,6 @@ class FullLogViewController: NSViewController {
     @IBOutlet private weak var syncButton: NSButton!
     @IBOutlet private weak var dbButton: NSButton!
     @IBOutlet private weak var queryButton: NSButton!
-    @IBOutlet private weak var messageDetailTextField: NSTextField!
     
     @IBOutlet private weak var searchTextField: NSTextField!
     
@@ -54,8 +53,10 @@ class FullLogViewController: NSViewController {
     @IBAction func search(sender: AnyObject) {
         let keyword = searchTextField.stringValue
         if !keyword.isEmpty {
-            messages = messages.filter({ $0.message.lowercased().range(of: keyword.lowercased()) != nil })
-            tableView.reloadData()
+            messages = messages.filter({
+                $0.message.lowercased().range(of: keyword.lowercased()) != nil
+            })
+            onChangeData()
         }
     }
     
@@ -66,15 +67,6 @@ class FullLogViewController: NSViewController {
     
     @objc func onLoad(_ notification: Notification) {
         loadData()
-    }
-    
-    @IBAction func onCopyMessageDetail(sender: AnyObject) {
-        copyToClipboard(messageDetailTextField.stringValue)
-    }
-    
-    @IBAction func copyAll(sender: AnyObject) {
-        let message = messages.map({ "\($0.dateDisplayString): \($0.message)" }).joined(separator: "\n")
-        copyToClipboard(message)
     }
 }
 
@@ -104,14 +96,14 @@ private extension FullLogViewController {
                 ($0.domain == Domain.db && dbButton.state == .on) ||
                 ($0.domain == Domain.query && queryButton.state == .on)
         })
-        tableView.reloadData()
+        onChangeData()
     }
     
     func loadData() {
         totalMessages = LogParser.shared.messages
         messages = LogParser.shared.messages
         configureFilterOptions(messages.count > 0)
-        tableView.reloadData()
+        onChangeData()
     }
     
     func copyToClipboard(_ message: String) {
@@ -119,6 +111,13 @@ private extension FullLogViewController {
         pasteboard.declareTypes([NSPasteboard.PasteboardType.string], owner: nil)
         pasteboard.setString(message,
                              forType: NSPasteboard.PasteboardType.string)
+    }
+    
+    func onChangeData() {
+        NotificationCenter.default.post(name: Constants.DID_LOG_CHANGED_NOTIFICATION,
+                                        object: nil,
+                                        userInfo: ["logs": messages])
+        tableView.reloadData()
     }
 }
 
@@ -184,6 +183,9 @@ extension FullLogViewController: NSTableViewDelegate {
             return
         }
         let message = messages[selectedRow]
-        messageDetailTextField.stringValue = "\(message.dateDisplayString): \(message.message)"
+        
+        NotificationCenter.default.post(name: Constants.DID_LOG_SELECT_NOTIFICATION,
+                                        object: nil,
+                                        userInfo: ["log": message])
     }
 }
