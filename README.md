@@ -20,4 +20,6 @@ This mac application will display all the information from the couchbase xcode l
 1. Choose the _verbose log_ throught the `browse` button. (Supported from Couchbase Iridium release).
 
 
-<img width="1207" alt="screen shot 2019-01-11 at 10 08 02 am" src="https://user-images.githubusercontent.com/10448770/51051520-d8e2f980-1588-11e9-9202-89e13c3b609b.png">
+## Screenshots
+!<img width="400" alt="Screen Shot 2019-04-06 at 2 19 22 PM copy" src="https://user-images.githubusercontent.com/10448770/55675431-38466200-5877-11e9-8e3e-e8ea14f33d60.png">
+!<img width="400" alt="Screen Shot 2019-04-06 at 2 19 49 PM" src="https://user-images.githubusercontent.com/10448770/55675435-53b16d00-5877-11e9-99c0-6dfc976cb11f.png">
