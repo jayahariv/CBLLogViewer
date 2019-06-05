@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1A5C70302258F6A0006F5EEF /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5C702F2258F6A0006F5EEF /* Utility.swift */; };
+		1AA3D70122A847790098E16B /* String+CBLLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA3D70022A847790098E16B /* String+CBLLog.swift */; };
 		1ABE8E3621D5C475005FC49B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABE8E3521D5C475005FC49B /* AppDelegate.swift */; };
 		1ABE8E3821D5C475005FC49B /* FullLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABE8E3721D5C475005FC49B /* FullLogViewController.swift */; };
 		1ABE8E3A21D5C478005FC49B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1ABE8E3921D5C478005FC49B /* Assets.xcassets */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		1A5C702F2258F6A0006F5EEF /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		1AA3D70022A847790098E16B /* String+CBLLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+CBLLog.swift"; sourceTree = "<group>"; };
 		1ABE8E3221D5C475005FC49B /* CBLLogViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CBLLogViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1ABE8E3521D5C475005FC49B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1ABE8E3721D5C475005FC49B /* FullLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullLogViewController.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			children = (
 				1ABE8E5721D70628005FC49B /* Constants.swift */,
 				1A5C702F2258F6A0006F5EEF /* Utility.swift */,
+				1AA3D70022A847790098E16B /* String+CBLLog.swift */,
 			);
 			path = misc;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 				1A5C70302258F6A0006F5EEF /* Utility.swift in Sources */,
 				1ABE8E5821D70628005FC49B /* Constants.swift in Sources */,
 				1ABE8E6121D9696A005FC49B /* LogMessage.swift in Sources */,
+				1AA3D70122A847790098E16B /* String+CBLLog.swift in Sources */,
 				1ABE8E3821D5C475005FC49B /* FullLogViewController.swift in Sources */,
 				1ABE8E5421D70171005FC49B /* LogParser.swift in Sources */,
 				1ABE8E3621D5C475005FC49B /* AppDelegate.swift in Sources */,

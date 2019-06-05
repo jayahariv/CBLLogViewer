@@ -13,6 +13,7 @@ class HomeViewController: NSViewController {
     // MARK: Properties
     private var selectedLog: LogMessage?
     private var logs = [LogMessage]()
+    private var parser: LogParser?
     
     /// IB properties
     @IBOutlet private weak var timestampLabel: NSTextField!
@@ -32,9 +33,21 @@ class HomeViewController: NSViewController {
                                                selector: #selector(onLogChanged(_:)),
                                                name: Constants.DID_LOG_CHANGED_NOTIFICATION,
                                                object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(onLoad(_:)),
+                                               name: Constants.DID_LOG_PARSE_NOTIFICATION,
+                                               object: nil)
+        
+        setDetailsUI()
     }
     
     // MARK: Helper methods
+    
+    func setDetailsUI() {
+        detailView.wantsLayer = true
+        detailView.layer?.borderWidth = 0.5
+    }
     
     func updateDetailSection() {
         guard let log = selectedLog else {
@@ -48,7 +61,7 @@ class HomeViewController: NSViewController {
     
     @IBAction func browseFile(sender: AnyObject) {
         let dialog = NSOpenPanel()
-        dialog.title = "Choose a .txt file"
+        dialog.title = "Choose the log file"
         dialog.showsResizeIndicator = true;
         dialog.showsHiddenFiles = false;
         dialog.canChooseDirectories = true;
@@ -61,7 +74,12 @@ class HomeViewController: NSViewController {
                 fatalError()
             }
             
-            LogParser.shared.parse(path)
+            parser = LogParser(path)
+            do {
+                try parser?.parse()
+            } catch {
+                print("Error happened while parsing: \(error)")
+            }
         }
     }
     
@@ -100,5 +118,11 @@ class HomeViewController: NSViewController {
     
     @IBAction func onToggleDetailSection(_ sender: NSButton) {
         widthContraint.constant = sender.state == .on ? 300.0 : 0.0
+    }
+    
+    @objc func onLoad(_ notification: Notification) {
+        if let parser = parser {
+            print("TODO: show the errors in details pane: \(parser.errors)")
+        }
     }
 }

@@ -673,12 +673,12 @@
         <scene sceneID="Vxz-fp-Ift">
             <objects>
                 <viewController id="4eb-0m-LvO" customClass="HomeViewController" customModule="CBLLogViewer" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" misplaced="YES" id="AhE-fy-K1C">
-                        <rect key="frame" x="0.0" y="0.0" width="950" height="489"/>
+                    <view key="view" id="AhE-fy-K1C">
+                        <rect key="frame" x="0.0" y="0.0" width="950" height="567"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="xri-sC-PpM">
-                                <rect key="frame" x="0.0" y="0.0" width="950" height="489"/>
+                                <rect key="frame" x="0.0" y="0.0" width="950" height="506"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="489" id="4lY-1g-vog"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="650" id="VEK-2O-S2V"/>
@@ -688,7 +688,7 @@
                                 </connections>
                             </containerView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="e4r-KI-Bga">
-                                <rect key="frame" x="14" y="502" width="85" height="32"/>
+                                <rect key="frame" x="14" y="519" width="85" height="32"/>
                                 <buttonCell key="cell" type="push" title="Browse" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tqc-Ih-RJV">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -698,7 +698,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aF5-ef-HIm">
-                                <rect key="frame" x="854" y="502" width="82" height="32"/>
+                                <rect key="frame" x="854" y="519" width="82" height="32"/>
                                 <buttonCell key="cell" type="push" title="Details" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="IXI-OG-OeJ">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -708,10 +708,10 @@
                                 </connections>
                             </button>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="Ryq-Wc-Z1I">
-                                <rect key="frame" x="950" y="0.0" width="0.0" height="489"/>
+                                <rect key="frame" x="950" y="0.0" width="0.0" height="506"/>
                                 <subviews>
                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="CW6-cW-SS2">
-                                        <rect key="frame" x="-8" y="452" width="17" height="17"/>
+                                        <rect key="frame" x="-8" y="469" width="17" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="230" id="FYL-qU-UMh"/>
                                         </constraints>
@@ -722,12 +722,12 @@
                                         </textFieldCell>
                                     </textField>
                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Eeg-KA-HDk">
-                                        <rect key="frame" x="-8" y="416" width="16" height="16"/>
+                                        <rect key="frame" x="-8" y="433" width="16" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="230" id="kcz-pg-Nns"/>
                                         </constraints>
                                         <textFieldCell key="cell" selectable="YES" alignment="left" title="--" id="RQ8-8I-bgQ">
-                                            <font key="font" metaFont="system" size="12"/>
+                                            <font key="font" metaFont="cellTitle"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -793,7 +793,7 @@
                 </viewController>
                 <customObject id="6mI-KN-1JT" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="244" y="962.5"/>
+            <point key="canvasLocation" x="244" y="923.5"/>
         </scene>
         <!--Tab View Controller-->
         <scene sceneID="Yhb-FM-Hno">

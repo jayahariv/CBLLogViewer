@@ -40,8 +40,6 @@ class FullLogViewController: NSViewController {
     
     override func viewWillAppear() {
         super.viewWillAppear()
-        
-        loadData()
     }
     
     // MARK: Button Actions
@@ -66,7 +64,9 @@ class FullLogViewController: NSViewController {
     }
     
     @objc func onLoad(_ notification: Notification) {
-        loadData()
+        if let parser = notification.object as? LogParser {
+            loadData(parser)
+        }
     }
 }
 
@@ -99,9 +99,10 @@ private extension FullLogViewController {
         onChangeData()
     }
     
-    func loadData() {
-        totalMessages = LogParser.shared.messages
-        messages = LogParser.shared.messages
+    func loadData(_ parser: LogParser) {
+        totalMessages = parser.messages
+        messages = parser.messages
+        
         configureFilterOptions(messages.count > 0)
         onChangeData()
     }
