@@ -1,0 +1,141 @@
+Test Suite 'Selected tests' started at 2019-06-05 10:53:31.329
+Test Suite 'CouchbaseLiteTests.xctest' started at 2019-06-05 10:53:31.330
+Test Suite 'ReplicatorTest_Main' started at 2019-06-05 10:53:31.331
+Test Case '-[ReplicatorTest_Main testPushDoc]' started.
+2019-06-05 10:53:31.334209-0700 xctest[22050:2053204] CouchbaseLite/2.6.0 (ObjC; macOS 10.14.5) Build/0 Commit/84a6220f+CHANGES LiteCore/2.5.0-EE (+0a13079b)
+2019-06-05 10:53:31.336815-0700 xctest[22050:2053204] CouchbaseLite Database WARNING: CBLDatabase.log.file.config is nil, meaning file logging is disabled. Log files required for product support are not being generated.
+2019-06-05 10:53:31.424738-0700 xctest[22050:2053204] ******** Dir: /var/folders/k1/80rmvdfd1_77xmz6x3n5d3zw0000gp/T/pushDoc
+2019-06-05 10:53:31.431100-0700 xctest[22050:2053204] CouchbaseLite Replicator Info: CBLReplicator[-> DB[otherdb]]: Starting...
+2019-06-05 10:53:31.440503-0700 xctest[22050:2053204] CouchbaseLite Replicator Info: {Repl#6}==> litecore::repl::Replicator /var/folders/k1/80rmvdfd1_77xmz6x3n5d3zw0000gp/T/CouchbaseLite_EE/testdb.cblite2/ ->file:////var/folders/k1/80rmvdfd1_77xmz6x3n5d3zw0000gp/T/CouchbaseLite_EE/testdb.cblite2/ @0x6190000834b0
+2019-06-05 10:53:31.440564-0700 xctest[22050:2053204] CouchbaseLite Replicator Info: {Repl#6} Push=one-shot, Options={{headers:{User-Agent:"CouchbaseLite/2.6.0 (ObjC; macOS 10.14.5) Build/0 Commit/84a6220f+CHANGES LiteCore/2.5.0-EE (+0a13079b)"}, noDeltas:1, progress:0}}
+2019-06-05 10:53:31.441722-0700 xctest[22050:2053204] CouchbaseLite Replicator Info: {repl#8}==> litecore::repl::Replicator /var/folders/k1/80rmvdfd1_77xmz6x3n5d3zw0000gp/T/CouchbaseLite_EE/otherdb.cblite2/ <-file:////var/folders/k1/80rmvdfd1_77xmz6x3n5d3zw0000gp/T/CouchbaseLite_EE/otherdb.cblite2/ @0x6190000848b0
+2019-06-05 10:53:31.441772-0700 xctest[22050:2053204] CouchbaseLite Replicator Info: {repl#8} Push=passive, Pull=passive, Options={{noDeltas:1, noIncomingConflicts:1}}
+2019-06-05 10:53:31.442570-0700 xctest[22050:2053204] CouchbaseLite Replicator Info: CBLReplicator[-> DB[otherdb]] is connecting, progress 0/0, error: (null)
+2019-06-05 10:53:31.443091-0700 xctest[22050:2053257] CouchbaseLite Replicator Info: CBLReplicator[-> DB[otherdb]] is connecting, progress 0/0, error: (null)
+2019-06-05 10:53:31.443235-0700 xctest[22050:2053204] ---Status: connecting (0 / 0), lastError = (null)
+2019-06-05 10:53:31.444394-0700 xctest[22050:2053239] CouchbaseLite Replicator Info: {repl#8} activityLevel=connecting: connectionState=1
+2019-06-05 10:53:31.444572-0700 xctest[22050:2053239] CouchbaseLite Replicator Info: {repl#8} activityLevel=connecting: connectionState=1
+2019-06-05 10:53:31.444675-0700 xctest[22050:2053239] CouchbaseLite Replicator Info: {repl#8} Connected!
+2019-06-05 10:53:31.444783-0700 xctest[22050:2053239] CouchbaseLite Replicator Info: {repl#8} activityLevel=busy: connectionState=2
+2019-06-05 10:53:31.444869-0700 xctest[22050:2053239] CouchbaseLite Replicator Info: {repl#8} now busy
+2019-06-05 10:53:31.445324-0700 xctest[22050:2053233] CouchbaseLite Replicator Verbose: {Repl#6} Remote-DB ID 1 found for target <file:////var/folders/k1/80rmvdfd1_77xmz6x3n5d3zw0000gp/T/CouchbaseLite_EE/testdb.cblite2/>
+2019-06-05 10:53:31.445555-0700 xctest[22050:2053233] CouchbaseLite Replicator Verbose: {Repl#6} Checkpoint doc ID = cp-QjLC6NN4SBEasCmB5TYz1WP5u9o=
+2019-06-05 10:53:31.446889-0700 xctest[22050:2053233] CouchbaseLite Replicator Info: {Repl#6} No local checkpoint 'cp-QjLC6NN4SBEasCmB5TYz1WP5u9o='
+2019-06-05 10:53:31.446979-0700 xctest[22050:2053233] CouchbaseLite Replicator Info: {Repl#6} activityLevel=connecting: connectionState=1
+2019-06-05 10:53:31.447059-0700 xctest[22050:2053233] CouchbaseLite Replicator Info: {Repl#6} activityLevel=connecting: connectionState=1
+2019-06-05 10:53:31.447185-0700 xctest[22050:2053233] CouchbaseLite Replicator Info: {Repl#6} Connected!
+2019-06-05 10:53:31.447268-0700 xctest[22050:2053233] CouchbaseLite Replicator Verbose: {Repl#6} Requesting remote checkpoint
+2019-06-05 10:53:31.447562-0700 xctest[22050:2053233] CouchbaseLite Replicator Info: {Repl#6} activityLevel=busy: connectionState=2
+2019-06-05 10:53:31.447734-0700 xctest[22050:2053257] CouchbaseLite Replicator Info: {pusher#13}==> litecore::repl::Pusher ->file:////var/folders/k1/80rmvdfd1_77xmz6x3n5d3zw0000gp/T/CouchbaseLite_EE/testdb.cblite2/ @0x616000085eb0
+2019-06-05 10:53:31.447821-0700 xctest[22050:2053257] CouchbaseLite Replicator Info: {pusher#13} Starting push from local seq #1
+2019-06-05 10:53:31.447921-0700 xctest[22050:2053257] CouchbaseLite Replicator Verbose: {pusher#13} Asking DB for 200 changes since sequence #0 ...
+2019-06-05 10:53:31.448009-0700 xctest[22050:2053233] CouchbaseLite Replicator Info: {Repl#6} now busy
+2019-06-05 10:53:31.448208-0700 xctest[22050:2053257] CouchbaseLite Replicator Verbose: {pusher#13} Reading up to 200 local changes since #0
+2019-06-05 10:53:31.448353-0700 xctest[22050:2053233] CouchbaseLite Replicator Info: {Repl#6} activityLevel=busy: connectionState=2
+2019-06-05 10:53:31.448592-0700 xctest[22050:2053259] CouchbaseLite Replicator Info: CBLReplicator[-> DB[otherdb]] is busy, progress 0/0, error: (null)
+2019-06-05 10:53:31.448689-0700 xctest[22050:2053204] ---Status: busy (0 / 0), lastError = (null)
+2019-06-05 10:53:31.449005-0700 xctest[22050:2053239] CouchbaseLite Replicator Info: {repl#8} Request to get checkpoint 'cp-QjLC6NN4SBEasCmB5TYz1WP5u9o='
+2019-06-05 10:53:31.450393-0700 xctest[22050:2053257] CouchbaseLite Replicator Info: {pusher#13} Read 1 local changes up to #1: sending 'proposeChanges' with sequences #1 - #1
+2019-06-05 10:53:31.450630-0700 xctest[22050:2053239] CouchbaseLite Replicator Info: {repl#8} activityLevel=busy: connectionState=2
+2019-06-05 10:53:31.450749-0700 xctest[22050:2053257] CouchbaseLite Replicator Info: {pusher#13} Caught up, at lastSequence #1
+2019-06-05 10:53:31.450979-0700 xctest[22050:2053257] CouchbaseLite Replicator Verbose: {pusher#13} progress +0/+48, 0 docs -- now 0 / 48, 0 docs
+2019-06-05 10:53:31.452760-0700 xctest[22050:2053257] CouchbaseLite Replicator Info: {pusher#13} activityLevel=busy: pendingResponseCount=1, caughtUp=1, changeLists=1, revsInFlight=0, blobsInFlight=0, awaitingReply=0, revsToSend=0, pushingDocs=1, pendingSequences=1
+2019-06-05 10:53:31.452841-0700 xctest[22050:2053257] CouchbaseLite Replicator Verbose: {pusher#13} now busy
+2019-06-05 10:53:31.453106-0700 xctest[22050:2053233] CouchbaseLite Replicator Info: {Repl#6} pushStatus=busy, pullStatus=stopped, progress=0/48
+2019-06-05 10:53:31.453206-0700 xctest[22050:2053233] CouchbaseLite Replicator Verbose: {Repl#6} progress +0/+48, 0 docs -- now 0 / 48, 0 docs
+2019-06-05 10:53:31.453287-0700 xctest[22050:2053233] CouchbaseLite Replicator Info: {Repl#6} activityLevel=busy: connectionState=2
+2019-06-05 10:53:31.453447-0700 xctest[22050:2053257] CouchbaseLite Replicator Info: {pusher#13} activityLevel=busy: pendingResponseCount=1, caughtUp=1, changeLists=1, revsInFlight=0, blobsInFlight=0, awaitingReply=0, revsToSend=0, pushingDocs=1, pendingSequences=1
+2019-06-05 10:53:31.454003-0700 xctest[22050:2053259] CouchbaseLite Replicator Verbose: {puller#14}==> litecore::repl::Puller <-file:////var/folders/k1/80rmvdfd1_77xmz6x3n5d3zw0000gp/T/CouchbaseLite_EE/otherdb.cblite2/ @0x61700005a9b0
+2019-06-05 10:53:31.454079-0700 xctest[22050:2053259] CouchbaseLite Replicator Verbose: {puller#14} Received 'proposeChanges' REQ#2 (0 queued; 0 revs pending, 0 active, 0 unfinished)
+2019-06-05 10:53:31.454205-0700 xctest[22050:2053239] CouchbaseLite Replicator Info: {Repl#6} No remote checkpoint
+2019-06-05 10:53:31.454300-0700 xctest[22050:2053239] CouchbaseLite Replicator Info: {Repl#6} activityLevel=busy: connectionState=2
+2019-06-05 10:53:31.454398-0700 xctest[22050:2053259] CouchbaseLite Replicator Verbose: {puller#14} Handling 'proposeChanges' REQ#2
+2019-06-05 10:53:31.454672-0700 xctest[22050:2053259] CouchbaseLite Replicator Info: {puller#14} activityLevel=busy: pendingResponseCount=0, _caughtUp=0, _pendingRevMessages=0, _activeIncomingRevs=0
+2019-06-05 10:53:31.454807-0700 xctest[22050:2053259] CouchbaseLite Replicator Verbose: {puller#14} now busy
+2019-06-05 10:53:31.454918-0700 xctest[22050:2053239] CouchbaseLite Replicator Info: {revfinder#15}==> litecore::repl::RevFinder <-file:////var/folders/k1/80rmvdfd1_77xmz6x3n5d3zw0000gp/T/CouchbaseLite_EE/otherdb.cblite2/ @0x61200003de70
+2019-06-05 10:53:31.454966-0700 xctest[22050:2053239] CouchbaseLite Replicator Info: {revfinder#15} Received 1 changes
+2019-06-05 10:53:31.455068-0700 xctest[22050:2053257] CouchbaseLite Replicator Info: {repl#8} pushStatus=busy, pullStatus=busy, progress=0/0
+2019-06-05 10:53:31.455185-0700 xctest[22050:2053257] CouchbaseLite Replicator Info: {repl#8} activityLevel=busy: connectionState=2
+2019-06-05 10:53:31.455687-0700 xctest[22050:2053257] CouchbaseLite Replicator Info: {puller#14} activityLevel=busy: pendingResponseCount=0, _caughtUp=0, _pendingRevMessages=1, _activeIncomingRevs=0
+2019-06-05 10:53:31.455809-0700 xctest[22050:2053239] CouchbaseLite Replicator Info: {revfinder#15} Responded to 'proposeChanges' REQ#2 w/request for 1 revs
+2019-06-05 10:53:31.455949-0700 xctest[22050:2053239] CouchbaseLite Replicator Verbose: {revfinder#15} now idle
+2019-06-05 10:53:31.456097-0700 xctest[22050:2053257] CouchbaseLite Replicator Info: {repl#8} pushStatus=busy, pullStatus=busy, progress=0/0
+2019-06-05 10:53:31.456302-0700 xctest[22050:2053257] CouchbaseLite Replicator Info: {repl#8} activityLevel=busy: connectionState=2
+2019-06-05 10:53:31.456621-0700 xctest[22050:2053259] CouchbaseLite Replicator Info: {pusher#13} Got response for 1 local changes (sequences from 1)
+2019-06-05 10:53:31.456782-0700 xctest[22050:2053259] CouchbaseLite Replicator Verbose: {pusher#13} Queueing rev 'doc1' #1-5b90fd1948276c02d409967a87339b1517e0c0b6 (seq #1) [1 queued]
+2019-06-05 10:53:31.456857-0700 xctest[22050:2053259] CouchbaseLite Replicator Verbose: {pusher#13} Sending rev doc1 1-5b90fd1948276c02d409967a87339b1517e0c0b6 (seq #1) [1/10]
+2019-06-05 10:53:31.456948-0700 xctest[22050:2053259] CouchbaseLite Replicator Verbose: {pusher#13} Reading document 'doc1' #1-5b90fd1948276c02d409967a87339b1517e0c0b6
+2019-06-05 10:53:31.457448-0700 xctest[22050:2053259] CouchbaseLite Replicator Verbose: {pusher#13} Transmitting 'rev' message with 'doc1' #1-5b90fd1948276c02d409967a87339b1517e0c0b6
+2019-06-05 10:53:31.457671-0700 xctest[22050:2053259] CouchbaseLite Replicator Info: {pusher#13} activityLevel=busy: pendingResponseCount=1, caughtUp=1, changeLists=0, revsInFlight=1, blobsInFlight=0, awaitingReply=0, revsToSend=0, pushingDocs=1, pendingSequences=1
+2019-06-05 10:53:31.457860-0700 xctest[22050:2053259] CouchbaseLite Replicator Info: {pusher#13} activityLevel=busy: pendingResponseCount=1, caughtUp=1, changeLists=0, revsInFlight=0, blobsInFlight=0, awaitingReply=109, revsToSend=0, pushingDocs=1, pendingSequences=1
+2019-06-05 10:53:31.458248-0700 xctest[22050:2053257] CouchbaseLite Replicator Info: {puller#14} activityLevel=busy: pendingResponseCount=0, _caughtUp=0, _pendingRevMessages=0, _activeIncomingRevs=1
+2019-06-05 10:53:31.458343-0700 xctest[22050:2053259] CouchbaseLite Replicator Verbose: {incomingrev#16}==> litecore::repl::IncomingRev <-file:////var/folders/k1/80rmvdfd1_77xmz6x3n5d3zw0000gp/T/CouchbaseLite_EE/otherdb.cblite2/ @0x61300006e630
+2019-06-05 10:53:31.458391-0700 xctest[22050:2053259] CouchbaseLite Replicator Verbose: {incomingrev#16} Received revision 'doc1' #1-5b90fd1948276c02d409967a87339b1517e0c0b6 (seq '1')
+2019-06-05 10:53:31.458742-0700 xctest[22050:2053257] CouchbaseLite Replicator Info: {puller#14} activityLevel=busy: pendingResponseCount=0, _caughtUp=0, _pendingRevMessages=0, _activeIncomingRevs=1
+2019-06-05 10:53:31.481333-0700 xctest[22050:2053257] CouchbaseLite Replicator Verbose: {inserter#17}==> litecore::repl::Inserter <-file:////var/folders/k1/80rmvdfd1_77xmz6x3n5d3zw0000gp/T/CouchbaseLite_EE/otherdb.cblite2/ @0x61500000fd30
+2019-06-05 10:53:31.481533-0700 xctest[22050:2053257] CouchbaseLite Replicator Verbose: {inserter#17} Inserting 1 revs:
+2019-06-05 10:53:31.486927-0700 xctest[22050:2053257] CouchbaseLite Replicator Verbose: {inserter#17}     {'doc1' #1-5b90fd1948276c02d409967a87339b1517e0c0b6 <- } seq 2
+2019-06-05 10:53:31.487340-0700 xctest[22050:2053259] CouchbaseLite Replicator Info: {puller#14} activityLevel=busy: pendingResponseCount=0, _caughtUp=0, _pendingRevMessages=0, _activeIncomingRevs=0
+2019-06-05 10:53:31.487706-0700 xctest[22050:2053257] CouchbaseLite Replicator Info: {inserter#17} Inserted   1 revs in   5.91ms (  169/sec) of which 99.7% was commit
+2019-06-05 10:53:31.487825-0700 xctest[22050:2053257] CouchbaseLite Replicator Verbose: {inserter#17} now idle
+2019-06-05 10:53:31.488192-0700 xctest[22050:2053257] CouchbaseLite Replicator Info: {repl#8} pushStatus=busy, pullStatus=busy, progress=0/0
+2019-06-05 10:53:31.488322-0700 xctest[22050:2053257] CouchbaseLite Replicator Info: {repl#8} activityLevel=busy: connectionState=2
+2019-06-05 10:53:31.488715-0700 xctest[22050:2053260] CouchbaseLite Replicator Verbose: {puller#14} progress +0/+0, 1 docs -- now 0 / 0, 1 docs
+2019-06-05 10:53:31.488857-0700 xctest[22050:2053260] CouchbaseLite Replicator Info: {puller#14} activityLevel=busy: pendingResponseCount=0, _caughtUp=0, _pendingRevMessages=0, _activeIncomingRevs=0
+2019-06-05 10:53:31.489158-0700 xctest[22050:2053239] CouchbaseLite Replicator Info: {repl#8} pushStatus=busy, pullStatus=busy, progress=0/0
+2019-06-05 10:53:31.489276-0700 xctest[22050:2053239] CouchbaseLite Replicator Verbose: {repl#8} progress +0/+0, 1 docs -- now 0 / 0, 1 docs
+2019-06-05 10:53:31.489371-0700 xctest[22050:2053239] CouchbaseLite Replicator Info: {repl#8} activityLevel=busy: connectionState=2
+2019-06-05 10:53:31.489476-0700 xctest[22050:2053260] CouchbaseLite Replicator Info: {puller#14} activityLevel=idle: pendingResponseCount=0, _caughtUp=0, _pendingRevMessages=0, _activeIncomingRevs=0
+2019-06-05 10:53:31.489561-0700 xctest[22050:2053260] CouchbaseLite Replicator Verbose: {puller#14} now idle
+2019-06-05 10:53:31.489727-0700 xctest[22050:2053257] CouchbaseLite Replicator Info: {repl#8} pushStatus=busy, pullStatus=idle, progress=0/0
+2019-06-05 10:53:31.489834-0700 xctest[22050:2053257] CouchbaseLite Replicator Info: {repl#8} activityLevel=busy: connectionState=2
+2019-06-05 10:53:31.489958-0700 xctest[22050:2053259] CouchbaseLite Replicator Verbose: {pusher#13} Completed rev doc1 #1-5b90fd1948276c02d409967a87339b1517e0c0b6 (seq #1)
+2019-06-05 10:53:31.490072-0700 xctest[22050:2053259] CouchbaseLite Replicator Verbose: {pusher#13} Checkpoint now at #1
+2019-06-05 10:53:31.490465-0700 xctest[22050:2053259] CouchbaseLite Replicator Verbose: {pusher#13} progress +48/+0, 1 docs -- now 48 / 48, 1 docs
+2019-06-05 10:53:31.490567-0700 xctest[22050:2053259] CouchbaseLite Replicator Info: {pusher#13} activityLevel=stopped: pendingResponseCount=0, caughtUp=1, changeLists=0, revsInFlight=0, blobsInFlight=0, awaitingReply=0, revsToSend=0, pushingDocs=0, pendingSequences=0
+2019-06-05 10:53:31.490644-0700 xctest[22050:2053259] CouchbaseLite Replicator Verbose: {pusher#13} now stopped
+2019-06-05 10:53:31.490751-0700 xctest[22050:2053259] CouchbaseLite Replicator Info: {Repl#6} pushStatus=stopped, pullStatus=stopped, progress=48/48
+2019-06-05 10:53:31.490861-0700 xctest[22050:2053259] CouchbaseLite Replicator Verbose: {Repl#6} progress +48/+0, 1 docs -- now 48 / 48, 1 docs
+2019-06-05 10:53:31.490943-0700 xctest[22050:2053259] CouchbaseLite Replicator Info: {Repl#6} activityLevel=busy: connectionState=2
+2019-06-05 10:53:31.491064-0700 xctest[22050:2053259] CouchbaseLite Replicator Verbose: {Repl#6} Saving remote checkpoint cp-QjLC6NN4SBEasCmB5TYz1WP5u9o= with rev='': {"local":1} ...
+2019-06-05 10:53:31.491241-0700 xctest[22050:2053259] CouchbaseLite Replicator Info: {Repl#6} activityLevel=busy: connectionState=2
+2019-06-05 10:53:31.491476-0700 xctest[22050:2053259] CouchbaseLite Replicator Info: {Repl#6} activityLevel=busy: connectionState=2
+2019-06-05 10:53:31.492214-0700 xctest[22050:2053257] CouchbaseLite Replicator Info: {repl#8} Request to set checkpoint 'cp-QjLC6NN4SBEasCmB5TYz1WP5u9o='
+2019-06-05 10:53:31.493143-0700 xctest[22050:2053257] CouchbaseLite Replicator Info: {repl#8} activityLevel=busy: connectionState=2
+2019-06-05 10:53:31.493737-0700 xctest[22050:2053259] CouchbaseLite Replicator Info: {Repl#6} Saved remote checkpoint cp-QjLC6NN4SBEasCmB5TYz1WP5u9o= as rev='1-cc'
+2019-06-05 10:53:31.496846-0700 xctest[22050:2053259] CouchbaseLite Replicator Verbose: {DBAccess#20}==> litecore::repl::DBAccess 0x61500000f820 @0x61500000f820
+2019-06-05 10:53:31.496938-0700 xctest[22050:2053259] CouchbaseLite Replicator Verbose: {DBAccess#20} Marked 1 revs as synced-to-server in 2.96ms (338/sec)
+2019-06-05 10:53:31.498035-0700 xctest[22050:2053259] CouchbaseLite Replicator Info: {Repl#6} Saved local checkpoint cp-QjLC6NN4SBEasCmB5TYz1WP5u9o= to db
+2019-06-05 10:53:31.498139-0700 xctest[22050:2053259] CouchbaseLite Replicator Info: {Repl#6} activityLevel=busy: connectionState=2
+2019-06-05 10:53:31.649575-0700 xctest[22050:2053259] CouchbaseLite Replicator Info: {repl#8} activityLevel=busy: connectionState=2
+2019-06-05 10:53:31.649923-0700 xctest[22050:2053239] CouchbaseLite Replicator Info: {Repl#6} Replication complete! Closing connection
+2019-06-05 10:53:31.650212-0700 xctest[22050:2053239] CouchbaseLite Replicator Info: {Repl#6} Told to stop!
+2019-06-05 10:53:31.650578-0700 xctest[22050:2053239] CouchbaseLite Replicator Info: {Repl#6} activityLevel=busy: connectionState=3
+2019-06-05 10:53:31.650930-0700 xctest[22050:2053257] CouchbaseLite Replicator Info: CBLReplicator[-> DB[otherdb]] is busy, progress 48/48, error: (null)
+2019-06-05 10:53:31.651046-0700 xctest[22050:2053204] ---Status: busy (48 / 48), lastError = (null)
+2019-06-05 10:53:31.651627-0700 xctest[22050:2053239] CouchbaseLite Replicator Info: {Repl#6} Connection closed with WebSocket status 1000: "" (state=3)
+2019-06-05 10:53:31.651803-0700 xctest[22050:2053260] CouchbaseLite Replicator Info: {repl#8} Connection closed with WebSocket status 1000: "" (state=2)
+2019-06-05 10:53:31.651976-0700 xctest[22050:2053260] CouchbaseLite Replicator Info: {repl#8} activityLevel=stopped: connectionState=0
+2019-06-05 10:53:31.652095-0700 xctest[22050:2053260] CouchbaseLite Replicator Info: {repl#8} now stopped
+2019-06-05 10:53:31.652221-0700 xctest[22050:2053239] CouchbaseLite Replicator Info: {Repl#6} activityLevel=stopped: connectionState=0
+2019-06-05 10:53:31.652360-0700 xctest[22050:2053239] CouchbaseLite Replicator Info: {Repl#6} now stopped
+2019-06-05 10:53:31.652510-0700 xctest[22050:2053259] CouchbaseLite Replicator Info: {pusher#21}==> litecore::repl::Pusher <-file:////var/folders/k1/80rmvdfd1_77xmz6x3n5d3zw0000gp/T/CouchbaseLite_EE/otherdb.cblite2/ @0x6160000861b0
+2019-06-05 10:53:31.652598-0700 xctest[22050:2053259] CouchbaseLite Replicator Info: {pusher#21} activityLevel=stopped: pendingResponseCount=0, caughtUp=0, changeLists=0, revsInFlight=0, blobsInFlight=0, awaitingReply=0, revsToSend=0, pushingDocs=0, pendingSequences=0
+2019-06-05 10:53:31.652724-0700 xctest[22050:2053259] CouchbaseLite Replicator Verbose: {pusher#21} now stopped
+2019-06-05 10:53:31.652857-0700 xctest[22050:2053257] CouchbaseLite Replicator Info: BLIP sent 4 msgs (309 bytes), rcvd 0 msgs (99 bytes) in 0.209 sec. Max outbox depth was 1, avg 1.00
+2019-06-05 10:53:31.653077-0700 xctest[22050:2053260] CouchbaseLite Replicator Info: CBLReplicator[-> DB[otherdb]] is stopped, progress 48/48, error: (null)
+2019-06-05 10:53:31.653124-0700 xctest[22050:2053233] CouchbaseLite Replicator Info: {puller#14} activityLevel=stopped: pendingResponseCount=0, _caughtUp=0, _pendingRevMessages=0, _activeIncomingRevs=0
+2019-06-05 10:53:31.653154-0700 xctest[22050:2053204] ---Status: stopped (48 / 48), lastError = (null)
+2019-06-05 10:53:31.653227-0700 xctest[22050:2053233] CouchbaseLite Replicator Verbose: {puller#14} now stopped
+2019-06-05 10:53:31.653427-0700 xctest[22050:2053257] CouchbaseLite Replicator Info: {pusher#13} activityLevel=stopped: pendingResponseCount=0, caughtUp=1, changeLists=0, revsInFlight=0, blobsInFlight=0, awaitingReply=0, revsToSend=0, pushingDocs=0, pendingSequences=0
+2019-06-05 10:53:31.653629-0700 xctest[22050:2053233] CouchbaseLite Replicator Info: BLIP sent 4 msgs (99 bytes), rcvd 4 msgs (309 bytes) in 0.210 sec. Max outbox depth was 1, avg 1.00
+2019-06-05 10:53:31.653867-0700 xctest[22050:2053204] CouchbaseLite Replicator Info: CBLReplicator[-> DB[otherdb]]: Stopping...
+2019-06-05 10:53:31.654025-0700 xctest[22050:2053204] CouchbaseLite Replicator Info: CBLReplicator[-> DB[otherdb]]: has already stopped; ignore stopping.
+Test Case '-[ReplicatorTest_Main testPushDoc]' passed (0.335 seconds).
+Test Suite 'ReplicatorTest_Main' passed at 2019-06-05 10:53:31.667.
+	 Executed 1 test, with 0 failures (0 unexpected) in 0.335 (0.336) seconds
+Test Suite 'CouchbaseLiteTests.xctest' passed at 2019-06-05 10:53:31.668.
+	 Executed 1 test, with 0 failures (0 unexpected) in 0.335 (0.337) seconds
+Test Suite 'Selected tests' passed at 2019-06-05 10:53:31.669.
+	 Executed 1 test, with 0 failures (0 unexpected) in 0.335 (0.339) seconds
+Program ended with exit code: 0

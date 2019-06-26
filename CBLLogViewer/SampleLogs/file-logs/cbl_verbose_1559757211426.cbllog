@@ -1,0 +1,131 @@
+---- CouchbaseLite/2.6.0 (ObjC; macOS 10.14.5) Build/0 Commit/84a6220f+CHANGES LiteCore/2.5.0-EE (+0a13079b) ----
+10:53:31.428125| [DB]: {DB#1} begin transaction
+10:53:31.429161| [DB]: {DB#1} Saved 'doc1' rev #1-5b90fd1948276c02d409967a87339b1517e0c0b6 as seq 1
+10:53:31.429278| [DB]: {DB#1} KeyStore(info) set SharedKeys
+10:53:31.429349| [DB]: {DB#1} commit transaction
+10:53:31.429841| [DB]: {DB#2} begin transaction
+10:53:31.430378| [DB]: {DB#2} Saved 'doc2' rev #1-835303a6b2fd4deee8e5825e678798a6495a62a5 as seq 1
+10:53:31.430478| [DB]: {DB#2} KeyStore(info) set SharedKeys
+10:53:31.430561| [DB]: {DB#2} commit transaction
+10:53:31.442594| [WS]: {LoopbackWS#9} Connecting to peer...
+10:53:31.442809| [WS]: {LoopbackWS#10} Connecting to peer...
+10:53:31.442944| [WS]: {LoopbackWS#10} (Peer is connecting...)
+10:53:31.443329| [WS]: {LoopbackWS#9} (Peer is connecting...)
+10:53:31.443713| [BLIP]: {BLIPIO#11} WebSocket is hungry!
+10:53:31.443807| [BLIP]: {BLIPIO#12} WebSocket is hungry!
+10:53:31.443865| [BLIP]: {BLIPIO#12} ...Wrote 0 bytes to WebSocket (writeable=1)
+10:53:31.443926| [BLIP]: {BLIPIO#11} ...Wrote 0 bytes to WebSocket (writeable=1)
+10:53:31.444491| [DB]: {DB#3} begin transaction
+10:53:31.444963| [DB]: {DB#3} KeyStore(info) set remotes
+10:53:31.445046| [DB]: {DB#3} commit transaction
+10:53:31.445352| [Sync]: {Repl#6} Remote-DB ID 1 found for target <file:////var/folders/k1/80rmvdfd1_77xmz6x3n5d3zw0000gp/T/CouchbaseLite_EE/testdb.cblite2/>
+10:53:31.445578| [Sync]: {Repl#6} Checkpoint doc ID = cp-QjLC6NN4SBEasCmB5TYz1WP5u9o=
+10:53:31.447288| [Sync]: {Repl#6} Requesting remote checkpoint
+10:53:31.447658| [BLIP]: {BLIPIO#11} Sending 'getCheckpoint' REQ #1 
+10:53:31.447941| [Sync]: {pusher#13} Asking DB for 200 changes since sequence #0 ...
+10:53:31.448093| [BLIP]: {BLIPIO#11}     Sending frame: REQ #1 ----, bytes 0--65
+10:53:31.448261| [Sync]: {pusher#13} Reading up to 200 local changes since #0
+10:53:31.448439| [BLIP]: {BLIPIO#11} Finished sending REQ #1 
+10:53:31.448613| [BLIP]: {BLIPIO#12} Received frame: REQ #1 ----, length    66
+10:53:31.448700| [BLIP]: {BLIPIO#11} ...Wrote 68 bytes to WebSocket (writeable=1)
+10:53:31.448790| [BLIP]: {Connection#7} Receiving 'getCheckpoint' REQ #1 
+10:53:31.448884| [BLIP]: {Connection#7} Finished receiving 'getCheckpoint' REQ #1 
+10:53:31.450824| [BLIP]: {BLIPIO#12} Sending ERR #1 
+10:53:31.450914| [BLIP]: {BLIPIO#12}     Sending frame: ERR #1 ----, bytes 0--37
+10:53:31.452670| [Sync]: {pusher#13} progress +0/+48, 0 docs -- now 0 / 48, 0 docs
+10:53:31.452859| [Sync]: {pusher#13} now busy
+10:53:31.452914| [BLIP]: {BLIPIO#11} Sending 'proposeChanges' REQ #2 UZ
+10:53:31.452993| [BLIP]: {BLIPIO#12} Finished sending ERR #1 
+10:53:31.453042| [BLIP]: {BLIPIO#12} ...Wrote 40 bytes to WebSocket (writeable=1)
+10:53:31.453228| [Sync]: {Repl#6} progress +0/+48, 0 docs -- now 0 / 48, 0 docs
+10:53:31.453365| [BLIP]: {BLIPIO#11}     Sending frame: REQ #2 -U-C, bytes 0--89
+10:53:31.453524| [BLIP]: {BLIPIO#11} Finished sending REQ #2 UZ
+10:53:31.453595| [BLIP]: {BLIPIO#12} Received frame: REQ #2 -U-C, length    90
+10:53:31.453659| [BLIP]: {BLIPIO#11} ...Wrote 92 bytes to WebSocket (writeable=1)
+10:53:31.453717| [BLIP]: {BLIPIO#11} Received frame: ERR #1 ----, length    38
+10:53:31.453765| [BLIP]: {Connection#7} Receiving 'proposeChanges' REQ #2 UZ
+10:53:31.453813| [BLIP]: {Connection#5} Receiving ERR #1 
+10:53:31.453855| [BLIP]: {Connection#7} Finished receiving 'proposeChanges' REQ #2 UZ
+10:53:31.453896| [BLIP]: {Connection#5} Finished receiving ERR #1 
+10:53:31.454104| [Sync]: {puller#14} Received 'proposeChanges' REQ#2 (0 queued; 0 revs pending, 0 active, 0 unfinished)
+10:53:31.454423| [Sync]: {puller#14} Handling 'proposeChanges' REQ#2
+10:53:31.454836| [Sync]: {puller#14} now busy
+10:53:31.455883| [BLIP]: {BLIPIO#12} Sending RES #2 UZ
+10:53:31.455970| [Sync]: {revfinder#15} now idle
+10:53:31.456013| [BLIP]: {BLIPIO#12}     Sending frame: RES #2 -U-C, bytes 0--33
+10:53:31.456171| [BLIP]: {BLIPIO#12} Finished sending RES #2 UZ
+10:53:31.456213| [BLIP]: {BLIPIO#11} Received frame: RES #2 -U-C, length    34
+10:53:31.456374| [BLIP]: {BLIPIO#12} ...Wrote 36 bytes to WebSocket (writeable=1)
+10:53:31.456458| [BLIP]: {Connection#5} Receiving RES #2 UZ
+10:53:31.456527| [BLIP]: {Connection#5} Finished receiving RES #2 UZ
+10:53:31.456804| [Sync]: {pusher#13} Queueing rev 'doc1' #1-5b90fd1948276c02d409967a87339b1517e0c0b6 (seq #1) [1 queued]
+10:53:31.456876| [Sync]: {pusher#13} Sending rev doc1 1-5b90fd1948276c02d409967a87339b1517e0c0b6 (seq #1) [1/10]
+10:53:31.456967| [Sync]: {pusher#13} Reading document 'doc1' #1-5b90fd1948276c02d409967a87339b1517e0c0b6
+10:53:31.457470| [Sync]: {pusher#13} Transmitting 'rev' message with 'doc1' #1-5b90fd1948276c02d409967a87339b1517e0c0b6
+10:53:31.457586| [BLIP]: {BLIPIO#11} Sending 'rev' REQ #3 Z
+10:53:31.457758| [BLIP]: {BLIPIO#11}     Sending frame: REQ #3 ---C, bytes 0--62
+10:53:31.457940| [BLIP]: {BLIPIO#11} Finished sending REQ #3 Z
+10:53:31.457983| [BLIP]: {BLIPIO#12} Received frame: REQ #3 ---C, length    63
+10:53:31.458023| [BLIP]: {BLIPIO#11} ...Wrote 65 bytes to WebSocket (writeable=1)
+10:53:31.458059| [BLIP]: {Connection#7} Receiving 'rev' REQ #3 Z
+10:53:31.458118| [BLIP]: {Connection#7} Finished receiving 'rev' REQ #3 Z
+10:53:31.458409| [Sync]: {incomingrev#16} Received revision 'doc1' #1-5b90fd1948276c02d409967a87339b1517e0c0b6 (seq '1')
+10:53:31.481588| [Sync]: {inserter#17} Inserting 1 revs:
+10:53:31.485672| [DB]: {DB#18} begin transaction
+10:53:31.486817| [DB]: {DB#18} Saved 'doc1' rev #1-5b90fd1948276c02d409967a87339b1517e0c0b6 as seq 2
+10:53:31.486990| [Sync]: {inserter#17}     {'doc1' #1-5b90fd1948276c02d409967a87339b1517e0c0b6 <- } seq 2
+10:53:31.487157| [DB]: {DB#18} commit transaction
+10:53:31.487854| [Sync]: {inserter#17} now idle
+10:53:31.487958| [BLIP]: {BLIPIO#12} Sending RES #3 
+10:53:31.488059| [BLIP]: {BLIPIO#12}     Sending frame: RES #3 ----, bytes 0--4
+10:53:31.488462| [BLIP]: {BLIPIO#12} Finished sending RES #3 
+10:53:31.488525| [BLIP]: {BLIPIO#12} ...Wrote 7 bytes to WebSocket (writeable=1)
+10:53:31.488758| [Sync]: {puller#14} progress +0/+0, 1 docs -- now 0 / 0, 1 docs
+10:53:31.488979| [BLIP]: {BLIPIO#11} Received frame: RES #3 ----, length     5
+10:53:31.489076| [BLIP]: {Connection#5} Receiving RES #3 
+10:53:31.489297| [Sync]: {repl#8} progress +0/+0, 1 docs -- now 0 / 0, 1 docs
+10:53:31.489578| [Sync]: {puller#14} now idle
+10:53:31.489647| [BLIP]: {Connection#5} Finished receiving RES #3 
+10:53:31.489988| [Sync]: {pusher#13} Completed rev doc1 #1-5b90fd1948276c02d409967a87339b1517e0c0b6 (seq #1)
+10:53:31.490092| [Sync]: {pusher#13} Checkpoint now at #1
+10:53:31.490495| [Sync]: {pusher#13} progress +48/+0, 1 docs -- now 48 / 48, 1 docs
+10:53:31.490661| [Sync]: {pusher#13} now stopped
+10:53:31.490882| [Sync]: {Repl#6} progress +48/+0, 1 docs -- now 48 / 48, 1 docs
+10:53:31.491084| [Sync]: {Repl#6} Saving remote checkpoint cp-QjLC6NN4SBEasCmB5TYz1WP5u9o= with rev='': {"local":1} ...
+10:53:31.491316| [BLIP]: {BLIPIO#11} Sending 'setCheckpoint' REQ #4 
+10:53:31.491397| [BLIP]: {BLIPIO#11}     Sending frame: REQ #4 ----, bytes 0--81
+10:53:31.491593| [BLIP]: {BLIPIO#11} Finished sending REQ #4 
+10:53:31.491670| [BLIP]: {BLIPIO#12} Received frame: REQ #4 ----, length    82
+10:53:31.491739| [BLIP]: {BLIPIO#11} ...Wrote 84 bytes to WebSocket (writeable=1)
+10:53:31.491799| [BLIP]: {Connection#7} Receiving 'setCheckpoint' REQ #4 
+10:53:31.491879| [BLIP]: {Connection#7} Finished receiving 'setCheckpoint' REQ #4 
+10:53:31.491964| [DB]: {DB#4} begin transaction
+10:53:31.492670| [DB]: {DB#4} KeyStore(peerCheckpoints) set cp-QjLC6NN4SBEasCmB5TYz1WP5u9o=
+10:53:31.492764| [DB]: {DB#4} commit transaction
+10:53:31.493228| [BLIP]: {BLIPIO#12} Sending RES #4 
+10:53:31.493290| [BLIP]: {BLIPIO#12}     Sending frame: RES #4 ----, bytes 0--13
+10:53:31.493353| [BLIP]: {BLIPIO#12} Finished sending RES #4 
+10:53:31.493393| [BLIP]: {BLIPIO#12} ...Wrote 16 bytes to WebSocket (writeable=1)
+10:53:31.493445| [BLIP]: {BLIPIO#11} Received frame: RES #4 ----, length    14
+10:53:31.493535| [BLIP]: {Connection#5} Receiving RES #4 
+10:53:31.493620| [BLIP]: {Connection#5} Finished receiving RES #4 
+10:53:31.496168| [DB]: {DB#19} begin transaction
+10:53:31.496663| [DB]: {DB#19} commit transaction
+10:53:31.496976| [Sync]: {DBAccess#20} Marked 1 revs as synced-to-server in 2.96ms (338/sec)
+10:53:31.497047| [DB]: {DB#3} begin transaction
+10:53:31.497643| [DB]: {DB#3} KeyStore(checkpoints) set cp-QjLC6NN4SBEasCmB5TYz1WP5u9o=
+10:53:31.497742| [DB]: {DB#3} commit transaction
+10:53:31.652748| [Sync]: {pusher#21} now stopped
+10:53:31.653247| [Sync]: {puller#14} now stopped
+10:53:31.654069| [DB]: {DB#3} Pre-close housekeeping: 0 of 9 pages free (0%)
+10:53:31.654315| [DB]: {DB#4} Pre-close housekeeping: 0 of 8 pages free (0%)
+10:53:31.655254| [DB]: {DB#3} Closed SQLite database
+10:53:31.655377| [DB]: {DB#4} Closed SQLite database
+10:53:31.659060| [DB]: {DB#18} Pre-close housekeeping: 0 of 8 pages free (0%)
+10:53:31.659160| [DB]: {DB#19} Pre-close housekeeping: 0 of 9 pages free (0%)
+10:53:31.660368| [DB]: {DB#18} Closed SQLite database
+10:53:31.660501| [DB]: {DB#19} Closed SQLite database
+10:53:31.661904| [DB]: {DB#2} Pre-close housekeeping: 0 of 8 pages free (0%)
+10:53:31.663165| [DB]: {DB#2} Closed SQLite database
+10:53:31.664206| [DB]: {DB#1} Pre-close housekeeping: 0 of 9 pages free (0%)
+10:53:31.665520| [DB]: {DB#1} Closed SQLite database

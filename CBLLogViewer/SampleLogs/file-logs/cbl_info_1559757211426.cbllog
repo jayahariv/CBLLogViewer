@@ -1,0 +1,106 @@
+---- CouchbaseLite/2.6.0 (ObjC; macOS 10.14.5) Build/0 Commit/84a6220f+CHANGES LiteCore/2.5.0-EE (+0a13079b) ----
+10:53:31.431030| [Sync]: CBLReplicator[-> DB[otherdb]]: Starting...
+10:53:31.431528| [DB]: {DB#3} Opening database
+10:53:31.435328| [DB]: {DB#4} Opening database
+10:53:31.439577| [BLIP]: {Connection#5} Opening connection...
+10:53:31.440582| [Sync]: {Repl#6} Push=one-shot, Options={{headers:{User-Agent:"CouchbaseLite/2.6.0 (ObjC; macOS 10.14.5) Build/0 Commit/84a6220f+CHANGES LiteCore/2.5.0-EE (+0a13079b)"}, noDeltas:1, progress:0}}
+10:53:31.441119| [BLIP]: {Connection#7} Accepted connection
+10:53:31.441788| [Sync]: {repl#8} Push=passive, Pull=passive, Options={{noDeltas:1, noIncomingConflicts:1}}
+10:53:31.442500| [Sync]: CBLReplicator[-> DB[otherdb]] is connecting, progress 0/0, error: (null)
+10:53:31.443009| [Sync]: CBLReplicator[-> DB[otherdb]] is connecting, progress 0/0, error: (null)
+10:53:31.443088| [WS]: {LoopbackWS#10} CONNECTED
+10:53:31.443440| [WS]: {LoopbackWS#9} CONNECTED
+10:53:31.443558| [BLIP]: {Connection#5} Connected!
+10:53:31.443629| [BLIP]: {Connection#7} Connected!
+10:53:31.444421| [Sync]: {repl#8} activityLevel=connecting: connectionState=1
+10:53:31.444593| [Sync]: {repl#8} activityLevel=connecting: connectionState=1
+10:53:31.444702| [Sync]: {repl#8} Connected!
+10:53:31.444801| [Sync]: {repl#8} activityLevel=busy: connectionState=2
+10:53:31.444903| [Sync]: {repl#8} now busy
+10:53:31.446915| [Sync]: {Repl#6} No local checkpoint 'cp-QjLC6NN4SBEasCmB5TYz1WP5u9o='
+10:53:31.446996| [Sync]: {Repl#6} activityLevel=connecting: connectionState=1
+10:53:31.447075| [Sync]: {Repl#6} activityLevel=connecting: connectionState=1
+10:53:31.447207| [Sync]: {Repl#6} Connected!
+10:53:31.447592| [Sync]: {Repl#6} activityLevel=busy: connectionState=2
+10:53:31.447845| [Sync]: {pusher#13} Starting push from local seq #1
+10:53:31.448030| [Sync]: {Repl#6} now busy
+10:53:31.448376| [Sync]: {Repl#6} activityLevel=busy: connectionState=2
+10:53:31.448504| [Sync]: CBLReplicator[-> DB[otherdb]] is busy, progress 0/0, error: (null)
+10:53:31.449031| [Sync]: {repl#8} Request to get checkpoint 'cp-QjLC6NN4SBEasCmB5TYz1WP5u9o='
+10:53:31.450428| [Sync]: {pusher#13} Read 1 local changes up to #1: sending 'proposeChanges' with sequences #1 - #1
+10:53:31.450653| [Sync]: {repl#8} activityLevel=busy: connectionState=2
+10:53:31.450770| [Sync]: {pusher#13} Caught up, at lastSequence #1
+10:53:31.452780| [Sync]: {pusher#13} activityLevel=busy: pendingResponseCount=1, caughtUp=1, changeLists=1, revsInFlight=0, blobsInFlight=0, awaitingReply=0, revsToSend=0, pushingDocs=1, pendingSequences=1
+10:53:31.453135| [Sync]: {Repl#6} pushStatus=busy, pullStatus=stopped, progress=0/48
+10:53:31.453304| [Sync]: {Repl#6} activityLevel=busy: connectionState=2
+10:53:31.453467| [Sync]: {pusher#13} activityLevel=busy: pendingResponseCount=1, caughtUp=1, changeLists=1, revsInFlight=0, blobsInFlight=0, awaitingReply=0, revsToSend=0, pushingDocs=1, pendingSequences=1
+10:53:31.454231| [Sync]: {Repl#6} No remote checkpoint
+10:53:31.454318| [Sync]: {Repl#6} activityLevel=busy: connectionState=2
+10:53:31.454732| [Sync]: {puller#14} activityLevel=busy: pendingResponseCount=0, _caughtUp=0, _pendingRevMessages=0, _activeIncomingRevs=0
+10:53:31.454983| [Sync]: {revfinder#15} Received 1 changes
+10:53:31.455094| [Sync]: {repl#8} pushStatus=busy, pullStatus=busy, progress=0/0
+10:53:31.455219| [Sync]: {repl#8} activityLevel=busy: connectionState=2
+10:53:31.455714| [Sync]: {puller#14} activityLevel=busy: pendingResponseCount=0, _caughtUp=0, _pendingRevMessages=1, _activeIncomingRevs=0
+10:53:31.455830| [Sync]: {revfinder#15} Responded to 'proposeChanges' REQ#2 w/request for 1 revs
+10:53:31.456118| [Sync]: {repl#8} pushStatus=busy, pullStatus=busy, progress=0/0
+10:53:31.456319| [Sync]: {repl#8} activityLevel=busy: connectionState=2
+10:53:31.456645| [Sync]: {pusher#13} Got response for 1 local changes (sequences from 1)
+10:53:31.457692| [Sync]: {pusher#13} activityLevel=busy: pendingResponseCount=1, caughtUp=1, changeLists=0, revsInFlight=1, blobsInFlight=0, awaitingReply=0, revsToSend=0, pushingDocs=1, pendingSequences=1
+10:53:31.457895| [Sync]: {pusher#13} activityLevel=busy: pendingResponseCount=1, caughtUp=1, changeLists=0, revsInFlight=0, blobsInFlight=0, awaitingReply=109, revsToSend=0, pushingDocs=1, pendingSequences=1
+10:53:31.458271| [Sync]: {puller#14} activityLevel=busy: pendingResponseCount=0, _caughtUp=0, _pendingRevMessages=0, _activeIncomingRevs=1
+10:53:31.458765| [Sync]: {puller#14} activityLevel=busy: pendingResponseCount=0, _caughtUp=0, _pendingRevMessages=0, _activeIncomingRevs=1
+10:53:31.482236| [DB]: {DB#18} Opening database
+10:53:31.487377| [Sync]: {puller#14} activityLevel=busy: pendingResponseCount=0, _caughtUp=0, _pendingRevMessages=0, _activeIncomingRevs=0
+10:53:31.487741| [Sync]: {inserter#17} Inserted   1 revs in   5.91ms (  169/sec) of which 99.7% was commit
+10:53:31.488226| [Sync]: {repl#8} pushStatus=busy, pullStatus=busy, progress=0/0
+10:53:31.488347| [Sync]: {repl#8} activityLevel=busy: connectionState=2
+10:53:31.488887| [Sync]: {puller#14} activityLevel=busy: pendingResponseCount=0, _caughtUp=0, _pendingRevMessages=0, _activeIncomingRevs=0
+10:53:31.489193| [Sync]: {repl#8} pushStatus=busy, pullStatus=busy, progress=0/0
+10:53:31.489392| [Sync]: {repl#8} activityLevel=busy: connectionState=2
+10:53:31.489496| [Sync]: {puller#14} activityLevel=idle: pendingResponseCount=0, _caughtUp=0, _pendingRevMessages=0, _activeIncomingRevs=0
+10:53:31.489754| [Sync]: {repl#8} pushStatus=busy, pullStatus=idle, progress=0/0
+10:53:31.489857| [Sync]: {repl#8} activityLevel=busy: connectionState=2
+10:53:31.490591| [Sync]: {pusher#13} activityLevel=stopped: pendingResponseCount=0, caughtUp=1, changeLists=0, revsInFlight=0, blobsInFlight=0, awaitingReply=0, revsToSend=0, pushingDocs=0, pendingSequences=0
+10:53:31.490770| [Sync]: {Repl#6} pushStatus=stopped, pullStatus=stopped, progress=48/48
+10:53:31.490963| [Sync]: {Repl#6} activityLevel=busy: connectionState=2
+10:53:31.491260| [Sync]: {Repl#6} activityLevel=busy: connectionState=2
+10:53:31.491506| [Sync]: {Repl#6} activityLevel=busy: connectionState=2
+10:53:31.492253| [Sync]: {repl#8} Request to set checkpoint 'cp-QjLC6NN4SBEasCmB5TYz1WP5u9o='
+10:53:31.493171| [Sync]: {repl#8} activityLevel=busy: connectionState=2
+10:53:31.493764| [Sync]: {Repl#6} Saved remote checkpoint cp-QjLC6NN4SBEasCmB5TYz1WP5u9o= as rev='1-cc'
+10:53:31.494060| [DB]: {DB#19} Opening database
+10:53:31.498065| [Sync]: {Repl#6} Saved local checkpoint cp-QjLC6NN4SBEasCmB5TYz1WP5u9o= to db
+10:53:31.498160| [Sync]: {Repl#6} activityLevel=busy: connectionState=2
+10:53:31.649681| [Sync]: {repl#8} activityLevel=busy: connectionState=2
+10:53:31.649995| [Sync]: {Repl#6} Replication complete! Closing connection
+10:53:31.650282| [Sync]: {Repl#6} Told to stop!
+10:53:31.650405| [BLIP]: {Connection#5} Closing with code 1000, msg ''
+10:53:31.650626| [Sync]: {Repl#6} activityLevel=busy: connectionState=3
+10:53:31.650740| [Sync]: CBLReplicator[-> DB[otherdb]] is busy, progress 48/48, error: (null)
+10:53:31.650936| [WS]: {LoopbackWS#10} CLOSE; status=1000
+10:53:31.651044| [WS]: {LoopbackWS#10} CLOSED with WebSocket status 1000: 
+10:53:31.651223| [WS]: {LoopbackWS#9} CLOSED with WebSocket status 1000: 
+10:53:31.651321| [BLIP]: {Connection#5} Closed with WebSocket status 1000: 
+10:53:31.651467| [BLIP]: {Connection#7} Closed with WebSocket status 1000: 
+10:53:31.651682| [Sync]: {Repl#6} Connection closed with WebSocket status 1000: "" (state=3)
+10:53:31.651842| [Sync]: {repl#8} Connection closed with WebSocket status 1000: "" (state=2)
+10:53:31.652003| [Sync]: {repl#8} activityLevel=stopped: connectionState=0
+10:53:31.652120| [Sync]: {repl#8} now stopped
+10:53:31.652260| [Sync]: {Repl#6} activityLevel=stopped: connectionState=0
+10:53:31.652386| [Sync]: {Repl#6} now stopped
+10:53:31.652627| [Sync]: {pusher#21} activityLevel=stopped: pendingResponseCount=0, caughtUp=0, changeLists=0, revsInFlight=0, blobsInFlight=0, awaitingReply=0, revsToSend=0, pushingDocs=0, pendingSequences=0
+10:53:31.652915| [Sync]: BLIP sent 4 msgs (309 bytes), rcvd 0 msgs (99 bytes) in 0.209 sec. Max outbox depth was 1, avg 1.00
+10:53:31.652989| [Sync]: CBLReplicator[-> DB[otherdb]] is stopped, progress 48/48, error: (null)
+10:53:31.653157| [Sync]: {puller#14} activityLevel=stopped: pendingResponseCount=0, _caughtUp=0, _pendingRevMessages=0, _activeIncomingRevs=0
+10:53:31.653475| [Sync]: {pusher#13} activityLevel=stopped: pendingResponseCount=0, caughtUp=1, changeLists=0, revsInFlight=0, blobsInFlight=0, awaitingReply=0, revsToSend=0, pushingDocs=0, pendingSequences=0
+10:53:31.653670| [Sync]: BLIP sent 4 msgs (99 bytes), rcvd 4 msgs (309 bytes) in 0.210 sec. Max outbox depth was 1, avg 1.00
+10:53:31.653773| [Sync]: CBLReplicator[-> DB[otherdb]]: Stopping...
+10:53:31.653948| [Sync]: CBLReplicator[-> DB[otherdb]]: has already stopped; ignore stopping.
+10:53:31.655317| [DB]: {DB#3} Closing database
+10:53:31.655443| [DB]: {DB#4} Closing database
+10:53:31.660431| [DB]: {DB#18} Closing database
+10:53:31.660557| [DB]: {DB#19} Closing database
+10:53:31.661668| [DB]: Closing CBLDatabase[otherdb] at path /var/folders/k1/80rmvdfd1_77xmz6x3n5d3zw0000gp/T/CouchbaseLite_EE/otherdb.cblite2/
+10:53:31.663217| [DB]: {DB#2} Closing database
+10:53:31.663399| [DB]: Closing CBLDatabase[testdb] at path /var/folders/k1/80rmvdfd1_77xmz6x3n5d3zw0000gp/T/CouchbaseLite_EE/testdb.cblite2/
+10:53:31.665575| [DB]: {DB#1} Closing database
