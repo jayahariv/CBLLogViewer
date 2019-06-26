@@ -151,43 +151,38 @@ class LogParser: NSObject {
                 continue
             }
             
-            guard let rangeOfTimestamp = line.range(of: "| ") else {
-                continue
+            // DATE STRING
+            guard let rangeOfTimestamp = line.range(of: Constants.CONSOLE_DATE_REGEX,
+                                                    options: .regularExpression,
+                                                    range: nil,
+                                                    locale: nil) else {
+                                                        continue
             }
-            let dateString = String(line[..<rangeOfTimestamp.lowerBound])
+            let dateString = String(line[..<rangeOfTimestamp.upperBound])
             guard let date = dateFormatter.date(from: dateString) else {
                 continue
             }
-            guard let rangeOfDomain = line.range(of: ": ") else {
+
+            // LOG DOMAIN
+            guard let rangeOfDomain = line.range(of: "CouchbaseLite+\\s+[A-Za-z]+\\s+[A-Za-z]+\\:",
+                                                 options: .regularExpression,
+                                                 range: nil,
+                                                 locale: nil) else {
                 continue
             }
-            let domainString = String(line[rangeOfTimestamp.upperBound..<rangeOfDomain.lowerBound])
-            guard let domain = Domain(rawValue: domainString) else {
-                continue
-            }
-            
-            let message = String(line[rangeOfDomain.upperBound...])
-            var isPush = false
-            var isPull = false
-            if message.range(of: "{Push#") != nil {
-                isPush = true
-                let infos = message.split(separator: " ")
-                if infos.count == 12 && infos[1] == "progress" {
-                    print(message)
-                }
-            }
-            if message.range(of: "{Pull#") != nil {
-                isPull = true
-            }
-            let push = Push(isPush: isPush, progress: 0.0)
-            let pull = Pull(isPull: isPull, progress: 0.0)
-            let repl = Repl(isRepl: message.range(of: "{Repl#") != nil, progress: 0.0)
+            let domainString = String(line[rangeOfDomain.lowerBound..<rangeOfDomain.upperBound])
+            let domainInfo = domainString.components(separatedBy: .whitespaces)
+            let domain = Domain.getDomainFromConsoleLog(domainInfo[1])
+//            if let level = Level(rawValue: domainInfo[2]) {
+//                print(level)
+//            }
+
             temp.append(LogMessage(domain: domain,
                                    date: date,
-                                   message: message,
-                                   push: push,
-                                   pull: pull,
-                                   repl: repl))
+                                   message: String(line[rangeOfDomain.upperBound...]),
+                                   push: Push(isPush: false, progress: 0.0),
+                                   pull: Pull(isPull: false, progress: 0.0),
+                                   repl: Repl(isRepl: false, progress: 0.0)))
         }
         
         return temp

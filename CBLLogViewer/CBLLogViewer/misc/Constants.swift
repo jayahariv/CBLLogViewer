@@ -25,5 +25,7 @@ struct Constants {
     static let DID_LOG_CHANGED_NOTIFICATION = Notification.Name(rawValue: "didLogsChanged")
     
     static let FILE_DATE_FORMAT  = "HH:mm:ss.SSSSSS"
-    static let CONSOLE_DATE_FORMAT = "yyyy-MM-dd HH:mm:ss.SSSSSSZ"
+    static let CONSOLE_DATE_FORMAT = "yyyy-MM-dd HH:mm:ss.SSSZ"
+    
+    static let CONSOLE_DATE_REGEX = "([\\d]{4})+((-[\\d]{2}){2})+\\s+(([\\d]{2}:){2})+([\\d]{2})+\\.+[\\d]+(\\-|\\+)+[0-9]+"
 }

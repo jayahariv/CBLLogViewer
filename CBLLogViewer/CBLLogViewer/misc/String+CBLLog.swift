@@ -21,6 +21,18 @@ import Foundation
 
 extension String {
     func isValidLog(_ isFileLog: Bool) -> Bool {
-        return isFileLog
+        guard !isFileLog else {
+            // handle later
+            return true
+        }
+        
+        let pattern = Constants.CONSOLE_DATE_REGEX + "\\s+[a-z]+\\[+[0-9]+\\:[0-9]+\\]+\\s+CouchbaseLite"
+        if self.range(of: pattern,
+                      options: .regularExpression,
+                      range: nil,
+                      locale: nil) != nil {
+            return true
+        }
+        return false
     }
 }

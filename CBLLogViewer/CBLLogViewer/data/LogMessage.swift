@@ -25,6 +25,29 @@ enum Domain: String {
     case blip = "[BLIP]"
     case ws = "[WS]"
     case query = "[Query]"
+    case unknown
+}
+
+extension Domain {
+    static func getDomainFromConsoleLog(_ domainString: String) -> Domain {
+        switch domainString {
+            case "Database": return .db
+            case "Replicator": return .sync
+            case "Network": return .blip
+            case "Websocket": return .ws
+            case "Query": return .query
+            default: return .unknown
+        }
+    }
+}
+
+enum Level: String {
+    case debug = "Debug:"
+    case verbose = "Verbose:"
+    case info = "Info:"
+    case warning = "WARNING:"
+    case error = "ERROR:"
+    case unknown
 }
 
 struct LogMessage {
