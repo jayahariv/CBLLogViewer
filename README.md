@@ -17,8 +17,19 @@ This mac application will display all the information from the couchbase xcode l
 
 
 ## How to check the logs
-1. Choose the _verbose log_ throught the `browse` button. (Supported from Couchbase Iridium release).
-2. After selecting any lines, click the details to see the message details, copy options. 
+### How to load 
+#### File log(from 2.5.x onwards)
+1. Choose the _verbose log_ through the `browse` button.
+
+#### Console log 
+1. Copy the console log to a _text file_. 
+2. Choose the _txt file_ through the `browse` button. 
+
+### Features
+- For Filtering logs, check/uncheck the the web-socket, BLIP, Sync, Query, DB checkboxes. 
+- For Search, enter any keyword and click search. Once done, click clear button.  
+- For details, choose the line and click the details button on top-right, you can see-details/copy(by clicking `copy message`); or click `copy all` to copy all those message to clipboard.
+- For Console logging, BLIP & Webscoket logs are combined in console logs. And this can be filtered through BLIP. 
 
 
 ## Screenshots
