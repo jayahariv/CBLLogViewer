@@ -1,5 +1,3 @@
-<img width="283" alt="Icon" src="https://user-images.githubusercontent.com/10448770/60210599-14f5d800-9812-11e9-87e4-439d415f5171.png">
-
 # CBLLogViewer
 ## Overview 
 This mac application will display all the information from the couchbase xcode log text file. Choose to filter the logs with the domain or level. 
