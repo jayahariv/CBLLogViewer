@@ -78,7 +78,7 @@ class HomeViewController: NSViewController {
         dialog.canChooseDirectories = true;
         dialog.canCreateDirectories = true;
         dialog.allowsMultipleSelection = false;
-        dialog.allowedFileTypes = ["cbllog"];
+        dialog.allowedFileTypes = ["cbllog", "txt"];
         
         if (dialog.runModal() == .OK) {
             guard let path = dialog.url else {
@@ -117,14 +117,14 @@ class HomeViewController: NSViewController {
     
     @IBAction func onCopyAll(_ sender: Any) {
         let message = logs.map({ "\($0.dateDisplayString): \($0.message)" }).joined(separator: "\n")
-        Utility.shared.copyToClipboard(message)
+        Utility.copyToClipboard(message)
     }
     
     @IBAction func onCopyMessage(_ sender: Any) {
         guard let log = selectedLog else {
             return
         }
-        Utility.shared.copyToClipboard("\(log.dateDisplayString): \(log.message)")
+        Utility.copyToClipboard("\(log.dateDisplayString): \(log.message)")
     }
     
     @IBAction func onToggleDetailSection(_ sender: NSButton) {

@@ -19,16 +19,17 @@
 
 import Cocoa
 
-class Utility: NSObject {
-    private static let instance = Utility()
-    static var shared: Utility {
-        return instance
-    }
-    
-    func copyToClipboard(_ message: String) {
+final class Utility: NSObject {
+    static func copyToClipboard(_ message: String) {
         let pasteboard = NSPasteboard.general
         pasteboard.declareTypes([NSPasteboard.PasteboardType.string], owner: nil)
         pasteboard.setString(message,
                              forType: NSPasteboard.PasteboardType.string)
+    }
+    
+    static func dateFormatter(_ isFileLog: Bool) -> DateFormatter {
+        let df = DateFormatter()
+        df.dateFormat = isFileLog ? Constants.FILE_DATE_FORMAT : Constants.CONSOLE_DATE_FORMAT
+        return df
     }
 }

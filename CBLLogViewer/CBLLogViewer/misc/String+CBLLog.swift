@@ -20,7 +20,7 @@
 import Foundation
 
 extension String {
-    func isValidLog() -> Bool {
-        return true
+    func isValidLog(_ isFileLog: Bool) -> Bool {
+        return isFileLog
     }
 }

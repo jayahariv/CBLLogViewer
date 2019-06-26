@@ -19,11 +19,6 @@
 
 import Cocoa
 
-struct LogParserConstants {
-    static let fileDateFormat  = "HH:mm:ss.SSSSSS"
-    static let consoleDateFormat = "yyyy-MM-dd HH:mm:ss.SSSSSSZ"
-}
-
 enum LogParserError: Error {
     case unsupported
     case noData
@@ -39,7 +34,7 @@ class LogParser: NSObject {
     private let _url: URL!
     
     var isSupported: Bool {
-        return _url.pathExtension == "cbllog"
+        return _url.pathExtension == "cbllog" || _url.pathExtension == "txt"
     }
     
     var isFileLog: Bool {
@@ -69,27 +64,39 @@ class LogParser: NSObject {
         if !isSupported {
             throw LogParserError.unsupported
         }
-        print("going to parse file at: \(_url.absoluteString)")
+        print("parse file at: \(_url.absoluteString)")
+        let lines = try getAllLines()
         
-        var allLines = try getAllLines()
+        let logs: [LogMessage]!
+        if isFileLog {
+            logs = try parseFileLog(lines)
+        } else {
+            logs = try parseConsoleLog(lines)
+        }
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = isFileLog
-            ? LogParserConstants.fileDateFormat
-            : LogParserConstants.consoleDateFormat
+        print("done parsing!")
+        if logs.count == 0 {
+            throw LogParserError.noData
+        }
+        
+        messages = logs
+        NotificationCenter.default.post(name: Constants.DID_LOG_PARSE_NOTIFICATION,
+                                        object: self)
+    }
+    
+    func parseFileLog(_ lines: IndexingIterator<[String]>) throws -> [LogMessage] {
+        var lines = lines
+        print("parse file log")
+        
+        let dateFormatter = Utility.dateFormatter(true)
         if let time = extractTimestamp() {
             let dateOfLog = Date(timeIntervalSince1970: time/1000)
             dateFormatter.defaultDate = dateOfLog
         }
         
-        var pushProgress: Double?
-        var pullProgress: Double?
-        var replProgress: Double?
         var temp = [LogMessage]()
-        
-        print("starting to parse the logs")
-        while let line = allLines.next() {
-            guard line.isValidLog() else {
+        while let line = lines.next() {
+            guard line.isValidLog(true) else {
                 continue
             }
             
@@ -111,7 +118,7 @@ class LogParser: NSObject {
             let message = String(line[rangeOfDomain.upperBound...])
             var isPush = false
             var isPull = false
-            if let range = message.range(of: "{Push#") {
+            if message.range(of: "{Push#") != nil {
                 isPush = true
                 let infos = message.split(separator: " ")
                 if infos.count == 12 && infos[1] == "progress" {
@@ -121,9 +128,9 @@ class LogParser: NSObject {
             if message.range(of: "{Pull#") != nil {
                 isPull = true
             }
-            let push = Push(isPush: isPush, progress: pushProgress)
-            let pull = Pull(isPull: isPull, progress: pullProgress)
-            let repl = Repl(isRepl: message.range(of: "{Repl#") != nil, progress: replProgress)
+            let push = Push(isPush: isPush, progress: 0.0)
+            let pull = Pull(isPull: isPull, progress: 0.0)
+            let repl = Repl(isRepl: message.range(of: "{Repl#") != nil, progress: 0.0)
             temp.append(LogMessage(domain: domain,
                                    date: date,
                                    message: message,
@@ -131,14 +138,59 @@ class LogParser: NSObject {
                                    pull: pull,
                                    repl: repl))
         }
-        print("finish parsing the logs")
-        if temp.count == 0 {
-            throw LogParserError.noData
+        
+        return temp
+    }
+    
+    func parseConsoleLog(_ lines: IndexingIterator<[String]>) throws -> [LogMessage] {
+        var lines = lines
+        var temp = [LogMessage]()
+        let dateFormatter = Utility.dateFormatter(false)
+        while let line = lines.next() {
+            guard line.isValidLog(false) else {
+                continue
+            }
+            
+            guard let rangeOfTimestamp = line.range(of: "| ") else {
+                continue
+            }
+            let dateString = String(line[..<rangeOfTimestamp.lowerBound])
+            guard let date = dateFormatter.date(from: dateString) else {
+                continue
+            }
+            guard let rangeOfDomain = line.range(of: ": ") else {
+                continue
+            }
+            let domainString = String(line[rangeOfTimestamp.upperBound..<rangeOfDomain.lowerBound])
+            guard let domain = Domain(rawValue: domainString) else {
+                continue
+            }
+            
+            let message = String(line[rangeOfDomain.upperBound...])
+            var isPush = false
+            var isPull = false
+            if message.range(of: "{Push#") != nil {
+                isPush = true
+                let infos = message.split(separator: " ")
+                if infos.count == 12 && infos[1] == "progress" {
+                    print(message)
+                }
+            }
+            if message.range(of: "{Pull#") != nil {
+                isPull = true
+            }
+            let push = Push(isPush: isPush, progress: 0.0)
+            let pull = Pull(isPull: isPull, progress: 0.0)
+            let repl = Repl(isRepl: message.range(of: "{Repl#") != nil, progress: 0.0)
+            temp.append(LogMessage(domain: domain,
+                                   date: date,
+                                   message: message,
+                                   push: push,
+                                   pull: pull,
+                                   repl: repl))
         }
         
-        messages = temp
-        NotificationCenter.default.post(name: Constants.DID_LOG_PARSE_NOTIFICATION,
-                                        object: self)
+        return temp
     }
 }
 
