@@ -28,7 +28,7 @@ This mac application will display all the information from the couchbase xcode l
 ### Features
 - For Filtering logs, check/uncheck the the web-socket, BLIP, Sync, Query, DB checkboxes. 
 - For Search, enter any keyword and click search. Once done, click clear button.  
-- For details, choose the line and you can copy contents; or if you choose multiple lines, you can click copy to copy all those message to clipboard.
+- For details, choose the line and click the details button on top-right, you can see-details/copy(by clicking `copy message`); or click `copy all` to copy all those message to clipboard.
 - For Console logging, BLIP & Webscoket logs are combined in console logs. And this can be filtered through BLIP. 
 
 
